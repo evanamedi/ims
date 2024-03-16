@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Supplier API</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="/static/style.css" />
+	</head>
+	<body>
+		<div>
+			<div>
+				<ul>
+					<li>
+						<a href="/product">Products</a>
+					</li>
+				</ul>
+			</div>
+			<div class="flex-container">
+				<div>
+					<!-- Get All Suppliers -->
+					<button class="all" id="get-all">Get All Suppliers</button>
+				</div>
+				<div>
+					<!-- Form for adding a new Supplier -->
+					<h1>Add Supplier</h1>
+					<form id="add-form">
+						<label for="name">Name:</label><br />
+						<input
+							type="text"
+							class="submit_field"
+							id="name"
+							name="name"
+						/><br />
+						<label for="address">Address:</label><br />
+						<input
+							type="text"
+							class="submit_field"
+							id="address"
+							name="address"
+						/><br />
+						<label for="contact">Contact:</label><br />
+						<input
+							type="text"
+							class="submit_field"
+							id="contact"
+							name="contact"
+						/><br />
+						<input type="submit" class="submit" value="Submit" />
+					</form>
+
+					<!-- Form for updating a supplier field -->
+					<h1>Update Supplier Field</h1>
+					<form id="update-form">
+						<label for="update-id">Supplier ID:</label><br />
+						<input
+							type="text"
+							class="submit_field"
+							id="update-id"
+							name="update-id"
+						/><br />
+						<label for="field">Field:</label><br />
+						<select id="field" class="submit_field" name="field">
+							<option value=""></option>
+							<option value="name">Name</option>
+							<option value="address">Address</option>
+							<option value="contact">Contact</option></select
+						><br />
+						<label for="new-value">New Value:</label><br />
+						<input
+							type="text"
+							class="submit_field"
+							id="new-value"
+							name="new-value"
+						/><br />
+						<input type="submit" class="submit" value="Submit" />
+					</form>
+
+					<!-- Form for getting a supplier by ID -->
+					<h1>Get Supplier by ID</h1>
+					<form id="get-form">
+						<label for="get-id">Supplier ID:</label><br />
+						<input
+							type="text"
+							class="submit_field"
+							id="get-id"
+							name="get-id"
+						/><br />
+						<input type="submit" class="submit" value="Submit" />
+					</form>
+
+					<!-- Form for getting a supplier by name -->
+					<h1>Get Supplier by Name</h1>
+					<form id="get-name-form">
+						<label for="get-name">Supplier Name:</label><br />
+						<input
+							class="submit_field"
+							type="text"
+							id="search-name"
+							name="search-name"
+						/><br />
+						<button class="submit" id="search-button">
+							Search
+						</button>
+					</form>
+				</div>
+				<div>
+					<div id="result"></div>
+				</div>
+			</div>
+		</div>
+		<script>
+			function appendData(row, supplier) {
+				var order = [
+					"id",
+					"supplier_name",
+					"supplier_address",
+					"supplier_contact",
+				];
+				order.forEach(function (key) {
+					row.append("<td>" + supplier[key] + "</td>");
+				});
+			}
+
+			function sendRequest(url, type, data) {
+				$.ajax({
+					url: url,
+					type: type,
+					contentType: "application/json",
+					data: JSON.stringify(data),
+					success: function (response) {
+						var suppliers = response.data;
+						var table = $("<table class='table'>");
+						table.append(
+							"<tr><th>ID</th><th>Name</th><th>Address</th><th>Contact</th></tr>"
+						);
+						suppliers.forEach(function (supplier) {
+							var row = $("<tr>");
+							appendData(row, supplier);
+							table.append(row);
+						});
+						$("#result").html(table);
+					},
+					error: function (response) {
+						$("#result").html(JSON.stringify(response));
+					},
+				});
+			}
+
+			$("#add-form").submit(function (event) {
+				event.preventDefault();
+
+				var name = $("#name").val();
+				var address = $("#address").val();
+				var contact = $("#contact").val();
+
+				sendRequest(`http://localhost:5000/v1/supplier`, "POST", {
+					supplier_name: name,
+					supplier_address: address,
+					supplier_contact: contact,
+				});
+			});
+
+			$("#get-form").submit(function (event) {
+				event.preventDefault();
+
+				var id = $("#get-id").val();
+
+				sendRequest(
+					`http://localhost:5000/v1/supplier/${id}`,
+					"GET",
+					{}
+				);
+			});
+
+			$("#update-form").submit(function (event) {
+				event.preventDefault();
+
+				var id = $("#update-id").val();
+				var field = $("#field").val();
+				var newValue = $("#new-value").val();
+
+				sendRequest(
+					`http://localhost:5000/v1/supplier/${id}/${field}`,
+					"PUT",
+					{ new_value: newValue }
+				);
+			});
+
+			$("#get-all").click(function () {
+				sendRequest(`http://localhost:5000/v1/supplier/all`, "GET", {});
+			});
+
+			$("#get-name-form").submit(function (event) {
+				event.preventDefault();
+				var name = $("#search-name").val();
+				sendRequest(
+					`http://localhost:5000/v1/supplier/name/${name}`,
+					"GET"
+				);
+			});
+		</script>
+	</body>
+</html>
