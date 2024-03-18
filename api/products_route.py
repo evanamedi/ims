@@ -1,9 +1,9 @@
 from logger import configure_logger
 from api.api_utils import format_response
 from flask import Blueprint, request, url_for
-from products.products import Product
+from logic.products.products import Product
 
-api_logger = configure_logger(__name__, True)
+api_logger = configure_logger(__name__, "app.log")
 product_routes = Blueprint("product_routes", __name__)
 
 # CREATE NEW PRODUCT
@@ -37,6 +37,18 @@ def get_product(product_id):
     if product is None:
         return format_response(400, "Product Not Found")
     return format_response(200, "Product Retrieved Successfully", product.to_dict())
+
+
+
+
+
+# DELETE PRODUCT
+@product_routes.route("/v1/product/delete/<int:product_id>", methods=["DELETE"])
+def delete_product(product_id):
+    rows_deleted = Product.delete_product(product_id)
+    if rows_deleted == 0:
+        return format_response(400, "Product Not Found")
+    return format_response(200, "Product Deleted Successfully")
 
 
 

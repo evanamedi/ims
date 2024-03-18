@@ -1,10 +1,10 @@
 from logger import configure_logger
 from api.api_utils import format_response
 from flask import Blueprint, request, url_for
-from suppliers.suppliers import Supplier
+from logic.suppliers.suppliers import Supplier
 
 
-api_logger = configure_logger(__name__, True)
+api_logger = configure_logger(__name__, "app.log")
 supplier_routes = Blueprint("supplier_routes", __name__)
 
 # CREATE NEW SUPPLIER
@@ -37,6 +37,18 @@ def get_supplier(supplier_id):
     if supplier is None:
         return format_response(400, "Supplier Not Found")
     return format_response(200, "Supplier retrieved successfully", supplier.to_dict())
+
+
+
+
+
+# DELETE SUPPLIER
+@supplier_routes.route("/v1/supplier/delete/<int:supplier_id>", methods=["DELETE"])
+def delete_supplier(supplier_id):
+    rows_deleted = Supplier.delete_supplier(supplier_id)
+    if rows_deleted == 0:
+        return format_response(400, "Supplier Not Found")
+    return format_response(200, "Supplier Deleted Successfully")
 
 
 

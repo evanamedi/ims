@@ -1,0 +1,155 @@
+{% extends "base.html" %} {% block title %} Products {% endblock %} {% block
+body %}
+<div>
+	<h1 class="text-6xl text-center">Products</h1>
+	<div class="flex justify-center mt-16 items-center">
+		<!-- Get All Products -->
+		<button class="all text-2xl bg-zinc500 rounded-lg p-2" id="get-all">
+			Get All Products
+		</button>
+	</div>
+	<div class="flex flex-row flex-wrap justify-center">
+		<div class="div">
+			<!-- BLOCK-->
+			<!-- BLOCK-->
+			<!-- BLOCK-->
+			<!-- BLOCK-->
+			<!-- BLOCK-->
+			<!-- Form for adding a new Product -->
+			<h1>Add Product</h1>
+			<form id="add-form">
+				<label for="supplier_id">Supplier ID:</label><br />
+				<input
+					type="text"
+					class="submit_field"
+					id="supplier_id"
+					name="supplier_id"
+				/><br />
+				<label for="name">Name:</label><br />
+				<input
+					type="text"
+					class="submit_field"
+					id="name"
+					name="name"
+				/><br />
+				<label for="name">Description:</label><br />
+				<input
+					type="text"
+					class="submit_field"
+					id="description"
+					name="description"
+				/><br />
+				<label for="name">Price:</label><br />
+				<input
+					type="text"
+					class="submit_field"
+					id="price"
+					name="price"
+				/><br />
+				<label for="name">Quantity:</label><br />
+				<input
+					type="text"
+					class="submit_field"
+					id="quantity"
+					name="quantity"
+				/><br />
+				<input type="submit" class="submit" value="Submit" />
+			</form>
+		</div>
+		<div class="div">
+			<!-- BLOCK-->
+			<!-- BLOCK-->
+			<!-- BLOCK-->
+			<!-- BLOCK-->
+			<!-- BLOCK-->
+			<!-- Form for deleting product -->
+			<h1>Delete Product</h1>
+			<form id="delete-form">
+				<label for="delete-id">Product ID:</label><br />
+				<input
+					type="text"
+					class="submit_field"
+					id="delete-id"
+					name="delete-id"
+				/><br />
+				<input type="submit" class="submit" value="submit" />
+			</form>
+		</div>
+		<div class="div">
+			<!-- BLOCK-->
+			<!-- BLOCK-->
+			<!-- BLOCK-->
+			<!-- BLOCK-->
+			<!-- BLOCK-->
+			<!-- From for updating a Product field -->
+			<h1>Update Product Field</h1>
+			<form id="update-form">
+				<label for="update-id">Product ID:</label><br />
+				<input
+					type="text"
+					class="submit_field"
+					id="update-id"
+					name="update-id"
+				/><br />
+				<label for="field">Field:</label><br />
+				<select id="field" class="submit_field" name="field">
+					<option value=""></option>
+					<option value="supplier">Supplier ID</option>
+					<option value="name">Name</option>
+					<option value="description">Description</option>
+					<option value="price">Price</option>
+					<option value="quantity">Quantity</option></select
+				><br />
+				<label for="new-value">New Value:</label><br />
+				<input
+					type="text"
+					class="submit_field"
+					id="new-value"
+					name="new-value"
+				/><br />
+				<input type="submit" class="submit" value="Submit" />
+			</form>
+		</div>
+		<div class="div">
+			<!-- BLOCK-->
+			<!-- BLOCK-->
+			<!-- BLOCK-->
+			<!-- BLOCK-->
+			<!-- BLOCK-->
+			<!-- Form for getting Product by ID -->
+			<h1>Get Product by ID</h1>
+			<form id="get-form">
+				<label for="get-id">Product ID:</label><br />
+				<input
+					type="text"
+					class="submit_field"
+					id="get-id"
+					name="get-id"
+				/><br />
+				<input type="submit" class="submit" value="Submit" />
+			</form>
+		</div>
+		<div class="div">
+			<!-- BLOCK-->
+			<!-- BLOCK-->
+			<!-- BLOCK-->
+			<!-- BLOCK-->
+			<!-- BLOCK-->
+			<!-- Form for getting a Product by name -->
+			<h1>Get Product by Name</h1>
+			<form id="get-name-form">
+				<label for="get-name">Product Name:</label><br />
+				<input
+					class="submit_field"
+					type="text"
+					id="search-name"
+					name="search-name"
+				/><br />
+				<button class="submit" id="search-button">Search</button>
+			</form>
+		</div>
+	</div>
+	<div id="result"></div>
+</div>
+<script src="/static/js_routing/product_route.js"></script>
+{% endblock %}

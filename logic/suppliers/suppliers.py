@@ -2,7 +2,7 @@ from database.db_utils import db_cursor
 import mysql.connector as db
 from logger import configure_logger
 
-app_logger = configure_logger(__name__)
+app_logger = configure_logger(__name__, "app.log")
 
 class Supplier:
     def __init__(self, supplier_name, supplier_address, supplier_contact, id=None):
@@ -37,7 +37,6 @@ class Supplier:
             except db.Error as e:
                 print(f"Database Error: {e}")
                 app_logger.error(f"Database Error {e}")
-
 
     def update_field(self, field, value):
         field_mapping = {
@@ -100,3 +99,9 @@ class Supplier:
     def find_by_id(supplier_id):
         result = Supplier.execute_and_print("SELECT * FROM suppliers WHERE id = %s", (supplier_id,))
         return result[0] if result else None
+
+    @staticmethod
+    def delete_supplier(supplier_id):
+        with db_cursor() as cursor:
+            cursor.execute("DELETE FROM suppliers WHERE id = %s", (supplier_id,))
+            return cursor.rowcount

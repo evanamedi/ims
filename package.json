@@ -1,0 +1,21 @@
+{
+	"name": "ims",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"tailwind": "tailwind -i static/styles.css -o static/index.css",
+		"watch:css": "nodemon -e py,html,css,js -x npm run tailwind"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"autoprefixer": "^10.4.18",
+		"nodemon": "^3.1.0",
+		"postcss": "^8.4.36",
+		"postcss-cli": "^11.0.0",
+		"tailwindcss": "^3.4.1"
+	}
+}

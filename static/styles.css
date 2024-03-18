@@ -1,0 +1,7 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.div {
+	@apply my-10 rounded-lg mx-4 p-2 bg-zinc500 text-test1;
+}

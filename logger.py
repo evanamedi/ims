@@ -1,19 +1,16 @@
 import logging
 
-def configure_logger(name, log_to_console=False):
+def configure_logger(name, log_file):
     logger = logging.getLogger(name)
     logger.setLevel(logging.DEBUG)
     
-    fh = logging.FileHandler("app.log")
+    fh = logging.FileHandler(log_file)
     fh.setLevel(logging.DEBUG)
     
     ch = logging.StreamHandler()
-    if log_to_console:
-        ch.setLevel(logging.ERROR)
-    else:
-        ch.setLevel(logging.DEBUG)
+    ch.setLevel(logging.DEBUG)
     
-    formatter = logging.Formatter("%(asctime)s | %(name)s | %(levelname)s | %(message)s")
+    formatter = logging.Formatter("%(asctime)s | %(filename)s | %(name)s | %(levelname)s | %(message)s")
     fh.setFormatter(formatter)
     ch.setFormatter(formatter)
     

@@ -2,7 +2,7 @@ from database.db_utils import db_cursor
 import mysql.connector as db
 from logger import configure_logger
 
-app_logger = configure_logger(__name__, True)
+app_logger = configure_logger(__name__, "app.log")
 
 class Product:
     def __init__(self, supplier_id, product_name, product_description, product_price, product_quantity, id = None):
@@ -112,3 +112,9 @@ class Product:
     @staticmethod
     def get_products_by_supplier(supplier_id):
         return Product.execute_and_print("SELECT * FROM products WHERE supplier_id = %s", (supplier_id,))
+
+    @staticmethod
+    def delete_product(product_id):
+        with db_cursor() as cursor:
+            cursor.execute("DELETE FROM products WHERE id = %s", (product_id,))
+            return cursor.rowcount
