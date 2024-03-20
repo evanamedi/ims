@@ -1,0 +1,38 @@
+{% extends "base.html" %} {% block title %} Dashboard {% endblock %} {% block
+body %}
+<div class="top">
+	<h1 class="title">Inventory Managment System</h1>
+</div>
+<div class="pageDivide">
+	<div class="leftDiv">
+		<div class="pageDivide2">
+			<div class="leftBar"></div>
+			<div class="rightBar"
+				<nav>
+					<div class="nav flex mt-2 flex-col px-1 mb-10">
+						<a class="navy" href="{{ url_for('home')}}">Home</a>
+						<a class="navy" href="{{ url_for('dashboard')}}"
+							>Dashboard</a
+						>
+						<a class="navy" href="{{ url_for('products')}}"
+							>Products</a
+						>
+						<a class="navy" href="{{ url_for('suppliers') }}"
+							>Suppliers</a
+						>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+	<div class="rightDiv">
+		<div class="inventoryList">
+			<h2 class="box">Suppliers</h2>
+			<h2 class="box">Inventory</h2>
+			<h2 class="box">Orders</h2>
+			<h2 class="box">Customers</h2>
+			<h2 class="box">Sales</h2>
+		</div>
+	</div>
+</div>
+{% endblock %}

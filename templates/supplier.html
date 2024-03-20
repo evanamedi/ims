@@ -1,131 +1,65 @@
 {% extends "base.html" %} {% block title %} Suppliers {% endblock %} {% block
 body %}
 <div>
-	<h1>Suppliers</h1>
-	<div class="flex-container">
-		<div>
-			<!-- Get All Suppliers -->
-			<button class="all" id="get-all">Get All Suppliers</button>
-		</div>
-		<div>
-			<!-- BLOCK-->
-			<!-- BLOCK-->
-			<!-- BLOCK-->
-			<!-- BLOCK-->
-			<!-- BLOCK-->
-			<!-- Form for adding a new Supplier -->
-			<h1>Add Supplier</h1>
-			<form id="add-form">
-				<label for="name">Name:</label><br />
-				<input
-					type="text"
-					class="submit_field"
-					id="name"
-					name="name"
-				/><br />
-				<label for="address">Address:</label><br />
-				<input
-					type="text"
-					class="submit_field"
-					id="address"
-					name="address"
-				/><br />
-				<label for="contact">Contact:</label><br />
-				<input
-					type="text"
-					class="submit_field"
-					id="contact"
-					name="contact"
-				/><br />
-				<input type="submit" class="submit" value="Submit" />
-			</form>
-			<!-- BLOCK-->
-			<!-- BLOCK-->
-			<!-- BLOCK-->
-			<!-- BLOCK-->
-			<!-- BLOCK-->
-			<!-- Form for deleting supplier -->
-			<h1>Delete Supplier</h1>
-			<form id="delete-form">
-				<label for="delete-id">Supplier ID:</label><br />
-				<input
-					type="text"
-					class="submit_field"
-					id="delete-id"
-					name="delete-id"
-				/>
-				<input type="submit" class="submit" value="submit" />
-			</form>
-			<!-- BLOCK-->
-			<!-- BLOCK-->
-			<!-- BLOCK-->
-			<!-- BLOCK-->
-			<!-- BLOCK-->
-			<!-- Form for updating a supplier field -->
-			<h1>Update Supplier Field</h1>
-			<form id="update-form">
-				<label for="update-id">Supplier ID:</label><br />
-				<input
-					type="text"
-					class="submit_field"
-					id="update-id"
-					name="update-id"
-				/><br />
-				<label for="field">Field:</label><br />
-				<select id="field" class="submit_field" name="field">
-					<option value=""></option>
-					<option value="name">Name</option>
-					<option value="address">Address</option>
-					<option value="contact">Contact</option></select
-				><br />
-				<label for="new-value">New Value:</label><br />
-				<input
-					type="text"
-					class="submit_field"
-					id="new-value"
-					name="new-value"
-				/><br />
-				<input type="submit" class="submit" value="Submit" />
-			</form>
-			<!-- BLOCK-->
-			<!-- BLOCK-->
-			<!-- BLOCK-->
-			<!-- BLOCK-->
-			<!-- BLOCK-->
-			<!-- Form for getting a supplier by ID -->
-			<h1>Get Supplier by ID</h1>
-			<form id="get-form">
-				<label for="get-id">Supplier ID:</label><br />
-				<input
-					type="text"
-					class="submit_field"
-					id="get-id"
-					name="get-id"
-				/><br />
-				<input type="submit" class="submit" value="Submit" />
-			</form>
-			<!-- BLOCK-->
-			<!-- BLOCK-->
-			<!-- BLOCK-->
-			<!-- BLOCK-->
-			<!-- BLOCK-->
-			<!-- Form for getting a supplier by name -->
-			<h1>Get Supplier by Name</h1>
-			<form id="get-name-form">
-				<label for="get-name">Supplier Name:</label><br />
-				<input
-					class="submit_field"
-					type="text"
-					id="search-name"
-					name="search-name"
-				/><br />
-				<button class="submit" id="search-button">Search</button>
-			</form>
-		</div>
-		<div>
-			<div id="result"></div>
-		</div>
+	<div>
+		<h1>Supplier Managment</h1>
 	</div>
+	<button id="get-all-suppliers">Get All Suppliers</button>
+	<button id="get-supplier-count">Get Supplier Count</button>
+	<div>
+		<h2>Create New Supplier</h2>
+		<form id="add-supplier">
+			<label for="name">Supplier Name:</label><br />
+			<input type="text" id="name" name="supplier_name" /><br />
+			<label for="address">Supplier Address:</label><br />
+			<input type="text" id="address" name="supplier_address" /><br />
+			<label for="contact">Supplier Contact:</label><br />
+			<input type="text" id="contact" name="supplier_contact" /><br />
+			<input type="submit" value="Submit" />
+		</form>
+	</div>
+	<div>
+		<h2>Update Supplier</h2>
+		<form id="update-supplier-field">
+			<label for="update-supplier-field">Supplier ID:</label><br />
+			<input type="text" id="update-id" name="supplier_id" /><br />
+			<label for="field">Field to Update:</label><br />
+			<select id="field">
+				<option value="supplier_name">Name</option>
+				<option value="supplier_address">Address</option>
+				<option value="supplier_contact">Contact</option></select
+			><br />
+			<label for="new-value">New Value:</label><br />
+			<input type="text" id="new-value" /><br />
+			<input type="submit" value="Submit" />
+		</form>
+	</div>
+	<div>
+		<h2>Get Supplier By ID</h2>
+		<form id="get-supplier-by-id">
+			<label for="supplier-id">Supplier ID:</label><br />
+			<input
+				type="text"
+				id="get-supplier-id"
+				name="the-supplier-id"
+			/><br />
+			<input type="submit" value="Submit" />
+		</form>
+	</div>
+	<div>
+		<h2>Delete Supplier</h2>
+		<form id="delete-supplier">
+			<label for="supplier-id">Supplier ID:</label><br />
+			<input
+				type="text"
+				id="delete-supplier-id"
+				name="the-supplier-id"
+			/><br />
+			<input type="submit" value="Submit" />
+		</form>
+	</div>
+	<div id="output"></div>
+	<div id="message"></div>
 </div>
-<script src="/static/js_routing/supplier_route.js"></script>
+<script src="static/js_routing/supplier_client_logic.js"></script>
 {% endblock %}

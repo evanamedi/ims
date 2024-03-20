@@ -60,8 +60,11 @@ module.exports = {
 				yellow700: "#a16207",
 				test1: "#d8d6b9 ",
 				test2: "#d8d6b9",
-				darkblue: "#3c0700",
+				darkblue: "#182B40",
 				darktest: "#00343c",
+				darkgey: "#262626",
+				lightgrey: "#C5C5C5",
+				greenblue: "#138F7F",
 			},
 			fontFamily: {
 				bebas: ["Bebas_Neue", "sans-serif"],
