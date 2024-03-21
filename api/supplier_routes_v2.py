@@ -25,7 +25,7 @@ def add_supplier():
     return format_response(200, "Supplier Added Successfully")
 
 # read_id_from_db()
-@supplier_routes_v2.route("/v2/supplier/<int:supplier_id>", methods=["GET"])
+@supplier_routes_v2.route("/v2/supplier/get/<int:supplier_id>", methods=["GET"])
 def get_supplier_by_id(supplier_id):
     try:
         supplier_table = Table("suppliers")
@@ -44,10 +44,7 @@ def get_supplier_by_id(supplier_id):
 def delete_supplier(supplier_id):
     try:
         supplier_table = Table("suppliers")
-        data = supplier_table.delete_from_db(supplier_id)
-        if not data:
-            logger.error("Supplier Not Found")
-            return format_response(400, "Supplier Not Found")
+        supplier_table.delete_from_db(supplier_id)
     except ValueError as e:
         logger.error(str(e))
         return format_response(400, str(e))

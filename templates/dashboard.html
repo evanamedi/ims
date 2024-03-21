@@ -1,38 +1,201 @@
 {% extends "base.html" %} {% block title %} Dashboard {% endblock %} {% block
 body %}
-<div class="top">
-	<h1 class="title">Inventory Managment System</h1>
-</div>
+
 <div class="pageDivide">
-	<div class="leftDiv">
-		<div class="pageDivide2">
-			<div class="leftBar"></div>
-			<div class="rightBar"
-				<nav>
-					<div class="nav flex mt-2 flex-col px-1 mb-10">
-						<a class="navy" href="{{ url_for('home')}}">Home</a>
-						<a class="navy" href="{{ url_for('dashboard')}}"
-							>Dashboard</a
-						>
-						<a class="navy" href="{{ url_for('products')}}"
-							>Products</a
-						>
-						<a class="navy" href="{{ url_for('suppliers') }}"
-							>Suppliers</a
-						>
+	<div class="bg-black bg-opacity-5">
+		<div class="relative">
+			<nav
+				id="nav"
+				class="nav flex text-center bg-black bg-opacity-60 font-black hidden absolute backdrop-blur z-50"
+			>
+				<div class="nav flex text-center h-screen flex-col">
+					<a class="navy mt-4" href="{{ url_for('home')}}">Home</a>
+					<a
+						class="navy mb-6 mt-4 pb-4 border-b"
+						href="{{ url_for('dashboard')}}"
+						>Dashboard</a
+					>
+					<a class="navy" href="{{ url_for('products')}}">Products</a>
+					<a class="navy mt-4" href="{{ url_for('suppliers') }}"
+						>Suppliers</a
+					>
+					<a class="navy mt-4">Orders</a>
+					<a class="navy mt-4">Customers</a>
+					<a class="navy mt-4 mb-4 pb-6 border-b">Sales</a>
+					<a class="navy mt-4">Logout</a>
+				</div>
+			</nav>
+			<div class="flex justify-center -mb-12 -ml-20 pb-8 rounded-md">
+				<button
+					class="text-xl text-white rounded-md"
+					id="dropDownButton"
+				>
+					<img
+						class="w-20 h-14 absolute z-0"
+						src="/static/menu.png"
+						alt="3 white line menu button"
+					/>
+				</button>
+			</div>
+		</div>
+		<div class="leftDiv">
+			<div class="forms">
+				<div class="box">
+					<div class="flex justify-center">
+						<button id="createID" class="fieldName">
+							Create New Supplier
+						</button>
 					</div>
-				</nav>
+					<form class="hidden" id="add-supplier">
+						<label for="name">Supplier Name:</label><br />
+						<input
+							class="formInput"
+							type="text"
+							id="supplier_name"
+							name="supplier_name"
+						/><br />
+						<label for="address">Supplier Address:</label><br />
+						<input
+							class="formInput"
+							type="text"
+							id="supplier_address"
+							name="supplier_address"
+						/><br />
+						<label for="contact">Supplier Contact:</label><br />
+						<input
+							class="formInput"
+							type="text"
+							id="supplier_contact"
+							name="supplier_contact"
+						/><br />
+						<div class="submit">
+							<input
+								class="submitButton"
+								type="submit"
+								value="Submit"
+							/>
+						</div>
+					</form>
+				</div>
+				<div class="box">
+					<div class="flex justify-center">
+						<button id="updateForm" class="fieldName">
+							Update Supplier
+						</button>
+					</div>
+					<form class="hidden" id="update-supplier-field">
+						<label for="update-supplier-field">Supplier ID:</label
+						><br />
+						<input
+							class="formInput"
+							type="text"
+							id="update-id"
+							name="supplier_id"
+						/><br />
+						<label for="field">Field:</label><br />
+						<select class="formInput" id="field">
+							<option></option>
+							<option value="supplier_name">Name</option>
+							<option value="supplier_address">Address</option>
+							<option value="supplier_contact">
+								Contact
+							</option></select
+						><br />
+						<label for="new-value">New Field:</label><br />
+						<input
+							class="formInput"
+							type="text"
+							id="new-value"
+						/><br />
+						<div class="submit">
+							<input
+								class="submitButton"
+								type="submit"
+								value="Submit"
+							/>
+						</div>
+					</form>
+				</div>
+				<div class="box">
+					<div class="flex justify-center">
+						<button id="getSupplierID" class="fieldName">
+							Get Supplier By ID
+						</button>
+					</div>
+					<form class="hidden" id="get-supplier-by-id">
+						<label for="supplier-id">Supplier ID:</label><br />
+						<input
+							class="formInput"
+							type="text"
+							id="get-supplier-id"
+							name="the-supplier-id"
+						/><br />
+						<div class="submit">
+							<input
+								class="submitButton"
+								type="submit"
+								value="Submit"
+							/>
+						</div>
+					</form>
+				</div>
+				<div class="box">
+					<div class="flex justify-center">
+						<button id="deleteSupplier" class="fieldName">
+							Delete Supplier
+						</button>
+					</div>
+					<form class="hidden" id="delete-supplier">
+						<label for="supplier-id">Supplier ID:</label><br />
+						<input
+							class="formInput"
+							type="text"
+							id="delete-supplier-id"
+							name="the-supplier-id"
+						/><br />
+						<div class="submit">
+							<input
+								class="submitButton"
+								type="submit"
+								value="Submit"
+							/>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
 	<div class="rightDiv">
-		<div class="inventoryList">
-			<h2 class="box">Suppliers</h2>
-			<h2 class="box">Inventory</h2>
-			<h2 class="box">Orders</h2>
-			<h2 class="box">Customers</h2>
-			<h2 class="box">Sales</h2>
+		<div class="top">
+			<h1 class="title">Inventory Managment System</h1>
 		</div>
+		<div>
+			<h2
+				class="text-lg font-bold italic bg-black bg-opacity-10 border-black border-t pb-1 text-white tracking-wider text-center"
+			>
+				Suppliers
+			</h2>
+		</div>
+		<div id="loading" style="display: none">Loading...</div>
+		<div id="error"></div>
+		<div>
+			<button class="text-white" id="supplierGet">More</button>
+		</div>
+		<div id="supplierGetButtons" class="buttons">
+			<button class="boxx hidden" id="get-all-suppliers">
+				Get All Suppliers
+			</button>
+			<button class="boxx hidden" id="get-supplier-count">
+				Get Supplier Count
+			</button>
+			<button class="boxx hidden" id="clear">Clear</button>
+		</div>
+		<div
+			class="text-white text-center flex flex-col mt-8 justify-center"
+			id="response"
+		></div>
 	</div>
 </div>
+<script src="static/js_routing/test_routing.js"></script>
+<script src="static/dropdown.js"></script>
 {% endblock %}

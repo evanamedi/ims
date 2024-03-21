@@ -12,7 +12,7 @@ def configure_logger():
     f_handler.setLevel(logging.DEBUG)
     
     c_format = logging.Formatter('%(filename)s | %(name)s | %(levelname)s | %(message)s')
-    f_format = logging.Formatter('%(filename)s | %(name)s | %(levelname)s | %(message)s | %(asctime)s')
+    f_format = logging.Formatter('%(asctime)s | %(filename)s | %(name)s | %(levelname)s | %(message)s')
     c_handler.setFormatter(c_format)
     f_handler.setFormatter(f_format)
     
