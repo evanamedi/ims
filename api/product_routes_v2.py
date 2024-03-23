@@ -92,17 +92,17 @@ def get_product_count():
     logger.info("Product Count Retrieved Successfully")
     return format_response(200, "Product Count Retrieved Successfully", product_count)
 
-# select_row_by_field()
-@product_routes_v2.route("/v2/product/select/<string:field>/<string:value>", methods=["GET"])
-def get_all_products_by_field(field, value):
-    try:
-        product_table = Table("products")
-        data = product_table.select_row_by_field(field, value)
-        if not data:
-            logger.error("Field or Value not found")
-            return format_response(400, "Field or Value Not Found")
-    except ValueError as e:
-        logger.error(str(e))
-        return format_response(400, str(e))
-    logger.info("Selected Rows Returned")
-    return format_response(200, "Selected Rows Returned", data)
+# # select_row_by_field()
+# @product_routes_v2.route("/v2/product/select/<string:field>/<string:value>", methods=["GET"])
+# def get_all_products_by_field(field, value):
+#     try:
+#         product_table = Table("products")
+#         data = product_table.select_row_by_field(field, value)
+#         if not data:
+#             logger.error("Field or Value not found")
+#             return format_response(400, "Field or Value Not Found")
+#     except ValueError as e:
+#         logger.error(str(e))
+#         return format_response(400, str(e))
+#     logger.info("Selected Rows Returned")
+#     return format_response(200, "Selected Rows Returned", data)

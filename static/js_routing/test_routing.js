@@ -254,20 +254,23 @@ function sendRequest(url, options) {
 	];
 	// Function to display received data in HTML- takes an array of data objects as arg
 	function generateHTML(dataArray) {
-		let html = "<table>"; // Create opening <table> tag
+		let html = "<table class='h-fit'>"; // Create opening <table> tag
 		html += "<tr>"; // Generate table header
 		for (let header of columnHeaders) {
 			html += `<th>${header}</th>`;
 		}
+		html += `<tr><td class="blankRow"></td><td class="blankRow"></td><td class="blankRow"></td><td class="blankRow"></td><td class="blankRow"></td></tr>`;
+		html += `<tr><td class="blankRow"></td><td class="blankRow"></td><td class="blankRow"></td><td class="blankRow"></td><td class="blankRow"></td></tr>`;
 		html += "</tr>";
 		for (let data of dataArray) {
 			// Loop over each data array in dataArray
 			html += "<tr>"; // Add opening tag for table row
 			for (let i = 0; i < columnHeaders.length; i++) {
 				// Loop through each column index
-				html += `<td>${data[i]}</td>`; // Add table cell with value of current index
+				html += `<td class="row">${data[i]}</td>`; // Add table cell with value of current index
 			}
 			html += "</tr>"; // Closing tag for table row
+			html += `<tr><td class="blankRow"></td><td class="blankRow"></td><td class="blankRow"></td><td class="blankRow"></td><td class="blankRow"></td></tr>`;
 		}
 		html += "</table>"; // Closing tag for table
 		return html; // Return HTML string
@@ -316,31 +319,11 @@ function sendRequestCount(url, options) {
 			return false;
 		});
 
-	const columnHeaders = [
-		"Supplier ID",
-		"Supplier Name",
-		"Supplier Address",
-		"Supplier Contact",
-	];
 	// Function to display received data in HTML- takes an array of data objects as arg
-	function generateHTML(dataArray) {
-		let html = "<table>"; // Create opening <table> tag
-		html += "<tr>"; // Generate table header
-		for (let header of columnHeaders) {
-			html += `<th>${header}</th>`;
-		}
-		html += "</tr>";
-		for (let data of dataArray) {
-			// Loop over each data array in dataArray
-			html += "<tr>"; // Add opening tag for table row
-			for (let i = 0; i < columnHeaders.length; i++) {
-				// Loop through each column index
-				html += `<td>${data[i]}</td>`; // Add table cell with value of current index
-			}
-			html += "</tr>"; // Closing tag for table row
-		}
-		html += "</table>"; // Closing tag for table
-		return html; // Return HTML string
+	function generateHTML(data) {
+		let html = `<div>Count: ${data[0]}</div>`;
+		return html;
+		// Return HTML string
 	}
 	return true;
 }

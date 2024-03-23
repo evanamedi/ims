@@ -2,17 +2,17 @@
 body %}
 
 <div class="pageDivide">
-	<div class="bg-black bg-opacity-5">
+	<div class="bg-black min-h-screen bg-opacity-0">
 		<div class="relative">
 			<nav
 				id="nav"
-				class="nav flex text-center bg-black bg-opacity-60 font-black hidden absolute backdrop-blur z-50"
+				class="nav text-center bg-black bg-opacity-60 font-black hidden absolute backdrop-blur z-50"
 			>
-				<div class="nav flex text-center h-screen flex-col">
+				<div
+					class="nav flex text-center max-w-full justify-evenly flex-row"
+				>
 					<a class="navy mt-4" href="{{ url_for('home')}}">Home</a>
-					<a
-						class="navy mb-6 mt-4 pb-4 border-b"
-						href="{{ url_for('dashboard')}}"
+					<a class="navy mt-4" href="{{ url_for('dashboard')}}"
 						>Dashboard</a
 					>
 					<a class="navy" href="{{ url_for('products')}}">Products</a>
@@ -21,17 +21,16 @@ body %}
 					>
 					<a class="navy mt-4">Orders</a>
 					<a class="navy mt-4">Customers</a>
-					<a class="navy mt-4 mb-4 pb-6 border-b">Sales</a>
-					<a class="navy mt-4">Logout</a>
+					<a class="navy mt-4">Sales</a>
 				</div>
 			</nav>
-			<div class="flex justify-center -mb-12 -ml-20 pb-8 rounded-md">
+			<div class="flex justify-center -mb-12 -ml-28 pb-8 rounded-md">
 				<button
 					class="text-xl text-white rounded-md"
 					id="dropDownButton"
 				>
 					<img
-						class="w-20 h-14 absolute z-0"
+						class="w-24 h-12 absolute z-0"
 						src="/static/menu.png"
 						alt="3 white line menu button"
 					/>
@@ -39,35 +38,171 @@ body %}
 			</div>
 		</div>
 		<div class="leftDiv">
-			<div class="forms">
-				<div class="box">
-					<div class="flex justify-center">
-						<button id="createID" class="fieldName">
-							Create New Supplier
-						</button>
+			<div>
+				<div class="-mt-10 text-center mb-10 whitespace-nowrap">
+					<h2
+						class="text-2xl hover:italic mb-4 text-white text-opacity-50 hover:text-white"
+					>
+						Dashboard
+					</h2>
+					<button
+						id="stats"
+						class="text-center text-xl my-3 px-6 border border-greenborder hover:border-sky3 border-opacity-100 rounded-xl hover:text-sky3"
+					>
+						Analytics
+					</button>
+				</div>
+				<div class="flex flex-col whitespace-nowrap">
+					<button class="fieldName" id="get-all-suppliers">
+						All
+					</button>
+					<button class="fieldName" id="get-supplier-count">
+						Count
+					</button>
+					<button class="fieldName" id="clear">Clear</button>
+				</div>
+				<div class="flex flex-col whitespace-nowrap mt-10">
+					<button id="createID" class="fieldName">Create New</button>
+					<button id="updateForm" class="fieldName">Update</button>
+					<button id="getSupplierID" class="fieldName">
+						Search ID
+					</button>
+					<button id="deleteSupplier" class="fieldName">
+						Delete
+					</button>
+					<div class="mt-16 text-center">
+						<a class="hover:text-sky3 px-2 py-1">Logout</a>
 					</div>
-					<form class="hidden" id="add-supplier">
-						<label for="name">Supplier Name:</label><br />
-						<input
-							class="formInput"
-							type="text"
-							id="supplier_name"
-							name="supplier_name"
-						/><br />
-						<label for="address">Supplier Address:</label><br />
-						<input
-							class="formInput"
-							type="text"
-							id="supplier_address"
-							name="supplier_address"
-						/><br />
-						<label for="contact">Supplier Contact:</label><br />
-						<input
-							class="formInput"
-							type="text"
-							id="supplier_contact"
-							name="supplier_contact"
-						/><br />
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="rightDiv">
+		<div class="flex justify-between flex-row">
+			<input
+				class="w-3/5 mt-8 ml-32 bg-white px-2 bg-opacity-40 placeholder-black rounded-lg"
+				type="text"
+				placeholder="Search Suppliers..."
+				id="search"
+				name="search"
+			/><br />
+
+			<div class="flex flex-col text-white items-end mr-4">
+				<div>
+					<h1 class="title text-center">IMS</h1>
+					<p class="-mt-4">Inventory Managment System</p>
+				</div>
+			</div>
+		</div>
+		<div>
+			<div>
+				<div class="flex flex-row mt-6 border-b-2 mx-6 justify-evenly">
+					<h2 class="dataName">Suppliers</h2>
+					<h2 class="dataName">Inventory</h2>
+					<h2 class="dataName">Customers</h2>
+					<h2 class="dataName">Orders</h2>
+					<h2 class="dataName">Sales</h2>
+				</div>
+
+				<div id="loading" style="display: none">Loading...</div>
+				<div id="error"></div>
+			</div>
+			<div class="max-h-20">
+				<div class="mainFormDiv-1 backdrop-blur">
+					<form class="hidden flex flex-col" id="add-supplier">
+						<div class="formDiv-3">
+							<div class="formDiv-4">
+								<label class="inputText" for="name"
+									>Supplier Name:</label
+								><br />
+								<input
+									class="formInput"
+									type="text"
+									id="supplier_name"
+									name="supplier_name"
+								/><br />
+							</div>
+							<div class="formDiv-4">
+								<label class="inputText" for="address"
+									>Supplier Address:</label
+								><br />
+								<input
+									class="formInput"
+									type="text"
+									id="supplier_address"
+									name="supplier_address"
+								/><br />
+							</div>
+							<div class="formDiv-4">
+								<label class="inputText" for="contact"
+									>Supplier Contact:</label
+								><br />
+								<input
+									class="formInput"
+									type="text"
+									id="supplier_contact"
+									name="supplier_contact"
+								/><br />
+							</div>
+							<div>
+								<div class="submit">
+									<input
+										class="submitButton"
+										type="submit"
+										value="Submit"
+									/>
+								</div>
+							</div>
+						</div>
+					</form>
+					<form
+						class="hidden flex flex-col"
+						id="update-supplier-field"
+					>
+						<div class="formDiv-3">
+							<div class="formDiv-4">
+								<label
+									class="inputText"
+									for="update-supplier-field"
+									>Supplier ID:</label
+								><br />
+								<input
+									class="formInput"
+									type="text"
+									id="update-id"
+									name="supplier_id"
+								/><br />
+							</div>
+							<div class="mt-4">
+								<div>
+									<label
+										class="text-white text-center ml-6"
+										for="field"
+										>Select</label
+									><br />
+								</div>
+								<select class="formInput" id="field">
+									<option></option>
+									<option value="supplier_name">Name</option>
+									<option value="supplier_address">
+										Address
+									</option>
+									<option value="supplier_contact">
+										Contact
+									</option></select
+								><br />
+							</div>
+							<div class="formDiv-4">
+								<label class="inputText" for="new-value"
+									>New Field:</label
+								><br />
+								<input
+									class="formInput"
+									type="text"
+									id="new-value"
+								/><br />
+							</div>
+						</div>
 						<div class="submit">
 							<input
 								class="submitButton"
@@ -76,52 +211,6 @@ body %}
 							/>
 						</div>
 					</form>
-				</div>
-				<div class="box">
-					<div class="flex justify-center">
-						<button id="updateForm" class="fieldName">
-							Update Supplier
-						</button>
-					</div>
-					<form class="hidden" id="update-supplier-field">
-						<label for="update-supplier-field">Supplier ID:</label
-						><br />
-						<input
-							class="formInput"
-							type="text"
-							id="update-id"
-							name="supplier_id"
-						/><br />
-						<label for="field">Field:</label><br />
-						<select class="formInput" id="field">
-							<option></option>
-							<option value="supplier_name">Name</option>
-							<option value="supplier_address">Address</option>
-							<option value="supplier_contact">
-								Contact
-							</option></select
-						><br />
-						<label for="new-value">New Field:</label><br />
-						<input
-							class="formInput"
-							type="text"
-							id="new-value"
-						/><br />
-						<div class="submit">
-							<input
-								class="submitButton"
-								type="submit"
-								value="Submit"
-							/>
-						</div>
-					</form>
-				</div>
-				<div class="box">
-					<div class="flex justify-center">
-						<button id="getSupplierID" class="fieldName">
-							Get Supplier By ID
-						</button>
-					</div>
 					<form class="hidden" id="get-supplier-by-id">
 						<label for="supplier-id">Supplier ID:</label><br />
 						<input
@@ -138,13 +227,6 @@ body %}
 							/>
 						</div>
 					</form>
-				</div>
-				<div class="box">
-					<div class="flex justify-center">
-						<button id="deleteSupplier" class="fieldName">
-							Delete Supplier
-						</button>
-					</div>
 					<form class="hidden" id="delete-supplier">
 						<label for="supplier-id">Supplier ID:</label><br />
 						<input
@@ -163,39 +245,20 @@ body %}
 					</form>
 				</div>
 			</div>
+			<div class="flex static justify-center">
+				<div class="w-18 w-1/4 mt-32 absolute">
+					<img src="/static/imslogo.png" />
+				</div>
+			</div>
+			<div class="max-h-[600px] relative overflow-auto mx-4">
+				<div
+					class="text-white overscroll-auto text-center flex flex-col justify-center h-fit"
+					id="response"
+				></div>
+			</div>
 		</div>
 	</div>
-	<div class="rightDiv">
-		<div class="top">
-			<h1 class="title">Inventory Managment System</h1>
-		</div>
-		<div>
-			<h2
-				class="text-lg font-bold italic bg-black bg-opacity-10 border-black border-t pb-1 text-white tracking-wider text-center"
-			>
-				Suppliers
-			</h2>
-		</div>
-		<div id="loading" style="display: none">Loading...</div>
-		<div id="error"></div>
-		<div>
-			<button class="text-white" id="supplierGet">More</button>
-		</div>
-		<div id="supplierGetButtons" class="buttons">
-			<button class="boxx hidden" id="get-all-suppliers">
-				Get All Suppliers
-			</button>
-			<button class="boxx hidden" id="get-supplier-count">
-				Get Supplier Count
-			</button>
-			<button class="boxx hidden" id="clear">Clear</button>
-		</div>
-		<div
-			class="text-white text-center flex flex-col mt-8 justify-center"
-			id="response"
-		></div>
-	</div>
+	<script src="static/js_routing/test_routing.js"></script>
+	<script src="static/dropdown.js"></script>
+	{% endblock %}
 </div>
-<script src="static/js_routing/test_routing.js"></script>
-<script src="static/dropdown.js"></script>
-{% endblock %}

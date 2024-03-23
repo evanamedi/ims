@@ -26,7 +26,11 @@ def products():
 
 @app.route("/test")
 def test():
-    return render_template('test_html.html')
+    return render_template("test_html.html")
+
+@app.route("/bookstore")
+def bookstore():
+    return render_template("bookstore.html")
 
 if __name__ =="__main__":
     app.run(debug=True, port=8000)
