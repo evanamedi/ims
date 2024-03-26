@@ -1,0 +1,37 @@
+
+1)
+the search bar:
+
+{% block placeholderSearch %} {% endblock %}
+
+<input
+	class="searchBar"
+	type="text"
+	placeholder="{% block placeholderSearch %} Search... {% endblock %}"
+	id="search"
+	name="search"
+	/><br />
+
+{% block placeholderSearch %} Search suppliers... {% endblock %}
+{% block placeholderSearch %} Search products... {% endblock %}
+{% block placeholderSearch %} Search Customers... {% endblock %}
+{% block placeholderSearch %} Search orders... {% endblock %}
+{% block placeholderSearch %} Search sales... {% endblock %}
+
+
+
+2)
+database input fields:
+
+<div class="databaseInputFields">
+	{% block dataBaseInputFields %}
+	{% endblock }
+</div>
+
+
+3)
+will need to inlcude each pages own script files
+
+
+
+will not implement now- as to focus on the getting the other pages completed. but will later take the left nav bar and make it into its own 'component'. currently all of the pages (tables) have the same options for sql actions they can take- but this isn't really practical. 

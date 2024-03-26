@@ -1,0 +1,116 @@
+{% extends "base.html" %} {% block title %} Suppliers {% endblock %} {% block
+placeholderSearch %} Search suppliers... {% endblock %} {% block
+dataBaseInputFields %}
+<div class="databaseInputFields">
+	<form class="hidden flex flex-col" id="add-supplier">
+		<div class="formDiv-3">
+			<div class="formDiv-4">
+				<label class="inputText" for="name">New Supplier Name:</label
+				><br />
+				<input
+					class="formInput"
+					type="text"
+					id="supplier_name"
+					name="supplier_name"
+				/><br />
+			</div>
+			<div class="formDiv-4">
+				<label class="inputText" for="address"
+					>New Supplier Address:</label
+				><br />
+				<input
+					class="formInput"
+					type="text"
+					id="supplier_address"
+					name="supplier_address"
+				/><br />
+			</div>
+			<div class="formDiv-4">
+				<label class="inputText" for="contact"
+					>New Supplier Contact:</label
+				><br />
+				<input
+					class="formInput"
+					type="text"
+					id="supplier_contact"
+					name="supplier_contact"
+				/><br />
+			</div>
+			<div>
+				<div class="submit">
+					<input class="submitButton" type="submit" value="Submit" />
+				</div>
+			</div>
+		</div>
+	</form>
+	<form class="hidden flex flex-col" id="update-supplier-field">
+		<div class="formDiv-3">
+			<div class="formDiv-4">
+				<label class="inputText" for="update-supplier-field"
+					>Supplier ID:</label
+				><br />
+				<input
+					class="formInput"
+					type="text"
+					id="update-id"
+					name="supplier_id"
+				/><br />
+			</div>
+			<div>
+				<label class="text-white ml-6" for="field">Select</label><br />
+				<select class="formInput" id="field">
+					<option></option>
+					<option value="supplier_name">Name</option>
+					<option value="supplier_address">Address</option>
+					<option value="supplier_contact">Contact</option></select
+				><br />
+			</div>
+			<div class="formDiv-4">
+				<label class="inputText" for="new-value">New Field:</label
+				><br />
+				<input class="formInput" type="text" id="new-value" /><br />
+			</div>
+			<div class="submit">
+				<input class="submitButton" type="submit" value="Submit" />
+			</div>
+		</div>
+	</form>
+	<form class="hidden flex flex-col" id="get-supplier-by-id">
+		<div class="formDiv-3">
+			<div class="formDiv-4">
+				<label class="inputText" for="supplier-id"
+					>(search) Supplier ID:</label
+				><br />
+				<input
+					class="formInput"
+					type="text"
+					id="get-supplier-id"
+					name="the-supplier-id"
+				/><br />
+			</div>
+			<div class="submit">
+				<input class="submitButton" type="submit" value="Submit" />
+			</div>
+		</div>
+	</form>
+	<form class="hidden flex flex-col" id="delete-supplier">
+		<div class="formDiv-3">
+			<div class="formDiv-4">
+				<label class="inputText" for="supplier-id"
+					>(delete) Supplier ID:</label
+				><br />
+				<input
+					class="formInput"
+					type="text"
+					id="delete-supplier-id"
+					name="the-supplier-id"
+				/><br />
+			</div>
+			<div class="submit">
+				<input class="submitButton" type="submit" value="Submit" />
+			</div>
+		</div>
+	</form>
+</div>
+<script src="static/js_routing/test_routing.js"></script>
+{% endblock %}

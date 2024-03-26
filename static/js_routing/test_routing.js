@@ -257,7 +257,7 @@ function sendRequest(url, options) {
 		let html = "<table class='h-fit'>"; // Create opening <table> tag
 		html += "<tr>"; // Generate table header
 		for (let header of columnHeaders) {
-			html += `<th>${header}</th>`;
+			html += `<th class="tableHeader">${header}</th>`;
 		}
 		html += `<tr><td class="blankRow"></td><td class="blankRow"></td><td class="blankRow"></td><td class="blankRow"></td><td class="blankRow"></td></tr>`;
 		html += `<tr><td class="blankRow"></td><td class="blankRow"></td><td class="blankRow"></td><td class="blankRow"></td><td class="blankRow"></td></tr>`;

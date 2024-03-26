@@ -2,7 +2,7 @@
 module.exports = {
 	content: ["./templates/**/*.html"],
 	presets: [],
-	darkMode: "media",
+	darkMode: ["class"],
 	theme: {
 		extend: {
 			boxShadow: {
@@ -81,6 +81,16 @@ module.exports = {
 				blueee: "#12232B",
 				blueback: "#1F2A28",
 				greenborder: "#43925F",
+				lightblue: "#b2fffa",
+				darkergreen: "#00995d",
+				lightgreen: "#aceabb",
+				darknavy: "#001978",
+				darkishnavy: "#0040ff",
+				c1: "#293D5A",
+				c2: "#09203f",
+				c10: " #243949 ",
+				c11: "#517fa4 ",
+				nice: "#eacda3",
 			},
 			fontFamily: {
 				bebas: ["Bebas_Neue", "sans-serif"],

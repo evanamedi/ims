@@ -2,7 +2,7 @@ venv
 .env
 /app.log
 /main.log
-/__pycache__
+**/__pycache__/
 .vscode
 node_modules
 .DS_Store

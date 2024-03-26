@@ -10,7 +10,7 @@ register_blueprints(app)
 
 @app.route("/")
 def home():
-    return render_template("home.html")
+    return render_template("dashboard.html")
 
 @app.route("/dashboard")
 def dashboard():
@@ -18,19 +18,23 @@ def dashboard():
 
 @app.route("/suppliers")
 def suppliers():
-    return render_template("supplier.html")
+    return render_template("suppliers.html")
 
 @app.route("/products")
 def products():
-    return render_template("product.html")
+    return render_template("products.html")
 
-@app.route("/test")
-def test():
-    return render_template("test_html.html")
+@app.route("/customers")
+def customers():
+    return render_template("customers.html")
 
-@app.route("/bookstore")
-def bookstore():
-    return render_template("bookstore.html")
+@app.route("/orders")
+def orders():
+    return render_template("orders.html")
+
+@app.route("/sales")
+def sales():
+    return render_template("sales.html")
 
 if __name__ =="__main__":
     app.run(debug=True, port=8000)

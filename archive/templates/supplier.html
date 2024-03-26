@@ -1,0 +1,66 @@
+{% extends "base.html" %} {% block title %} Suppliers {% endblock %} {% block
+body %}
+<div>
+	<div>
+		<h1>Supplier Managment</h1>
+	</div>
+	<button id="get-all-suppliers">Get All Suppliers</button>
+	<button id="get-supplier-count">Get Supplier Count</button>
+	<div>
+		<h2>Create New Supplier</h2>
+		<form id="add-supplier">
+			<label for="name">Supplier Name:</label><br />
+			<input type="text" id="name" name="supplier_name" /><br />
+			<label for="address">Supplier Address:</label><br />
+			<input type="text" id="address" name="supplier_address" /><br />
+			<label for="contact">Supplier Contact:</label><br />
+			<input type="text" id="contact" name="supplier_contact" /><br />
+			<input type="submit" value="Submit" />
+		</form>
+	</div>
+	<div>
+		<h2>Update Supplier</h2>
+		<form id="update-supplier-field">
+			<label for="update-supplier-field">Supplier ID:</label><br />
+			<input type="text" id="update-id" name="supplier_id" /><br />
+			<label for="field">Field to Update:</label><br />
+			<select id="field">
+				<option value="null"></option>
+				<option value="supplier_name">Name</option>
+				<option value="supplier_address">Address</option>
+				<option value="supplier_contact">Contact</option></select
+			><br />
+			<label for="new-value">New Value:</label><br />
+			<input type="text" id="new-value" /><br />
+			<input type="submit" value="Submit" />
+		</form>
+	</div>
+	<div>
+		<h2>Get Supplier By ID</h2>
+		<form id="get-supplier-by-id">
+			<label for="supplier-id">Supplier ID:</label><br />
+			<input
+				type="text"
+				id="get-supplier-id"
+				name="the-supplier-id"
+			/><br />
+			<input type="submit" value="Submit" />
+		</form>
+	</div>
+	<div>
+		<h2>Delete Supplier</h2>
+		<form id="delete-supplier">
+			<label for="supplier-id">Supplier ID:</label><br />
+			<input
+				type="text"
+				id="delete-supplier-id"
+				name="the-supplier-id"
+			/><br />
+			<input type="submit" value="Submit" />
+		</form>
+	</div>
+	<div id="output"></div>
+	<div id="message"></div>
+</div>
+<script src="static/js_routing/supplier_client_logic.js"></script>
+{% endblock %}
