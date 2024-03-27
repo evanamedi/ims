@@ -556,10 +556,6 @@ video {
   border-width: 0;
 }
 
-.ml-6 {
-  margin-left: 1.5rem;
-}
-
 .block {
   display: block;
 }
@@ -578,11 +574,6 @@ video {
 
 .flex-col {
   flex-direction: column;
-}
-
-.text-white {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 @import "tailwindcss/forms";
@@ -968,6 +959,14 @@ Layer numbers are not meant to be taken literally- but serve as a general guide.
 
 /* 						LAYER:	RS-3 				         		*/
 
+/*			ADD				*/
+
+/*			UPDATE			*/
+
+/*			GET				*/
+
+/*			DELETE			*/
+
 .databaseInputFields {
   margin-top: 2.5rem;
   display: flex;
@@ -1011,13 +1010,13 @@ Layer numbers are not meant to be taken literally- but serve as a general guide.
   margin-right: 0.5rem;
   margin-top: -0.75rem;
   border-radius: 0.375rem;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
 :is(.dark .formInput) {
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
   --tw-bg-opacity: 0.2;
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
 .submit {
@@ -1047,14 +1046,6 @@ Layer numbers are not meant to be taken literally- but serve as a general guide.
   --tw-text-opacity: 1;
   color: rgb(234 205 163 / var(--tw-text-opacity));
 }
-
-/*			ADD				*/
-
-/*			UPDATE			*/
-
-/*			GET				*/
-
-/*			DELETE			*/
 
 /* -------------------- LOGO DIV 1 -------------------- */
 

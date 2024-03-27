@@ -23,12 +23,11 @@ function addSupplier(event) {
 	// Data
 	let data = {
 		supplier_name: supplierName,
-		supplier_address: supplierAddress,
-		supplier_contact: supplierContact,
+		supplierAddress: supplierAddress,
+		supplierContact: supplierContact,
 	};
 
 	prepareAndSendData(method, data, url);
-	clearFields();
 }
 
 //
@@ -52,7 +51,7 @@ function updateSupplier(event) {
 		return; // If it returns false, script will end early
 	}
 
-	let url = `/v2/supplier/update/${supplier_id}/${field}`; // API route
+	let url = `/v2/supplier/update/${supplierID}/${field}`; // API route
 	let method = "PUT"; // Method
 	// Data
 	let data = {
@@ -60,7 +59,6 @@ function updateSupplier(event) {
 	};
 
 	prepareAndSendData(method, data, url);
-	clearFields();
 }
 
 //
@@ -83,10 +81,9 @@ function getSupplierById(event) {
 	}
 
 	let url = `/v2/supplier/get/${supplier_id}`; // API route
-	let method = "GET"; // Method
+	let method = "PUT"; // Method
 
 	prepareAndSendRequest(method, url);
-	clearFields();
 }
 
 //
@@ -112,7 +109,6 @@ function deleteSupplier(event) {
 	let method = "DELETE"; // Method
 
 	prepareAndSendRequest(method, url);
-	clearFields();
 }
 
 //
@@ -145,11 +141,10 @@ document
 function getSupplierCount() {
 	document.getElementById("loading").style.display = "block";
 
-	let count = true;
 	let url = "/v2/supplier/count"; // API route
 	let method = "GET"; // Method
 
-	prepareAndSendRequest(method, url, count);
+	prepareAndSendRequest(method, url);
 }
 
 //
@@ -162,15 +157,3 @@ const columnHeaders = [
 	"Supplier Address",
 	"Supplier Contact",
 ];
-
-// Clear input fields
-function clearFields() {
-	document.getElementById("supplier_name").value = "";
-	document.getElementById("supplier_address").value = "";
-	document.getElementById("supplier_contact").value = "";
-	document.getElementById("update-id").value = "";
-	document.getElementById("field").value = "";
-	document.getElementById("new-value").value = "";
-	document.getElementById("get-supplier-id").value = "";
-	document.getElementById("delete-supplier-id").value = "";
-}

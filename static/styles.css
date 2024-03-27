@@ -141,7 +141,8 @@ Layer numbers are not meant to be taken literally- but serve as a general guide.
 
 /* -------------------- DATA BASE INPUT FIELDS -------------------- */
 /* 						LAYER:	RS-3 				         		*/
-
+/*			ADD				*/ /*			UPDATE			*/
+/*			GET				*/ /*			DELETE			*/
 .databaseInputFields {
 	@apply textColor max-h-20 pb-24 flex mt-10 flex-row justify-center backdrop-blur;
 }
@@ -159,7 +160,7 @@ Layer numbers are not meant to be taken literally- but serve as a general guide.
 }
 
 .formInput {
-	@apply rounded-md dark:text-black dark:bg-black dark:bg-opacity-20 mx-2 -mt-3;
+	@apply rounded-md text-black dark:bg-black dark:bg-opacity-20 mx-2 -mt-3;
 }
 
 .submit {
@@ -169,9 +170,6 @@ Layer numbers are not meant to be taken literally- but serve as a general guide.
 .submitButton {
 	@apply bg-sameshadeblack px-4 border border-white border-opacity-40 dark:text-nice rounded-2xl hover:bg-white hover:bg-opacity-70 hover:text-black;
 }
-
-/*			ADD				*/ /*			UPDATE			*/
-/*			GET				*/ /*			DELETE			*/
 
 /* -------------------- LOGO DIV 1 -------------------- */
 /* 						LAYER:	RS-3 				    */

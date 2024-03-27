@@ -1,19 +1,9 @@
-// Table Page Selection
-let selectionButton = document.getElementById("tableSelectButton");
-let selectionMenu = document.getElementById("selectionMenu");
+let createButton = document.getElementById("createButtonID");
+let updateButton = document.getElementById("updateButtonID");
+let getByIdButton = document.getElementById("getByIdButtonID");
+let deleteButton = document.getElementById("deleteButtonID");
 
-selectionButton.addEventListener("click", function (event) {
-	event.stopPropagation();
-	selectionMenu.classList.toggle("hidden");
-});
-
-window.addEventListener("click", function (event) {
-	if (!selectionMenu.contains(event.target))
-		selectionMenu.classList.add("hidden");
-});
-
-// CREATE SUPPLIER BUTTON
-let createButton = document.getElementById("createID");
+// ADD A NEW SUPPLIER
 let createForm = document.getElementById("add-supplier");
 // TOGGLE ON
 createButton.addEventListener("click", function (event) {
@@ -28,8 +18,11 @@ window.addEventListener("click", function (event) {
 	if (!createForm.contains(event.target)) createSupplier(false);
 });
 
-// UPDATE SUPPLIER BUTTON
-let updateButton = document.getElementById("updateForm");
+//
+//
+//
+
+// UPDATE SUPPLIER
 let updateField = document.getElementById("update-supplier-field");
 // TOGGLE ON
 updateButton.addEventListener("click", function (event) {
@@ -44,11 +37,14 @@ window.addEventListener("click", function (event) {
 	if (!updateField.contains(event.target)) updateSupplier(false);
 });
 
-// GET SUPPLIER BUTTON
-let getSupplierButton = document.getElementById("getSupplierID");
+//
+//
+//
+
+// GET SUPPLIER BY ID
 let getFormID = document.getElementById("get-supplier-by-id");
 // TOGGLE ON
-getSupplierButton.addEventListener("click", function (event) {
+getByIdButton.addEventListener("click", function (event) {
 	event.stopPropagation();
 	getSupplier(true);
 	createSupplier(false);
@@ -60,11 +56,14 @@ window.addEventListener("click", function (event) {
 	if (!getFormID.contains(event.target)) getSupplier(false);
 });
 
-// DELETE SUPPLIER BUTTON
-let deleteSupplierButton = document.getElementById("deleteSupplier");
-let deleteForm = document.getElementById("delete-supplier");
+//
+//
+//
 
-deleteSupplierButton.addEventListener("click", function (event) {
+// DELETE SUPPLIER
+let deleteForm = document.getElementById("delete-supplier");
+// TOGGLE ON
+deleteButton.addEventListener("click", function (event) {
 	event.stopPropagation();
 	deleteSupplier(true);
 	createSupplier(false);
@@ -75,6 +74,17 @@ deleteSupplierButton.addEventListener("click", function (event) {
 window.addEventListener("click", function (event) {
 	if (!deleteForm.contains(event.target)) deleteSupplier(false);
 });
+
+//
+//
+//
+//
+//
+//
+//
+// FUNCTIONS
+//
+//
 
 // CREATE SUPPLIER BUTTON FUNCTION
 function createSupplier(bool) {
@@ -90,13 +100,7 @@ function createSupplier(bool) {
 		);
 	}
 }
-
 //
-//
-//
-//
-//
-// FUNCTIONS
 //
 //
 //
@@ -121,12 +125,12 @@ function getSupplier(bool) {
 	if (bool) {
 		return (
 			getFormID.classList.toggle("hidden"),
-			getSupplierButton.classList.toggle("toggleButton")
+			getByIdButton.classList.toggle("toggleButton")
 		);
 	} else {
 		return (
 			getFormID.classList.add("hidden"),
-			getSupplierButton.classList.remove("toggleButton")
+			getByIdButton.classList.remove("toggleButton")
 		);
 	}
 }
@@ -136,60 +140,12 @@ function deleteSupplier(bool) {
 	if (bool) {
 		return (
 			deleteForm.classList.toggle("hidden"),
-			deleteSupplierButton.classList.toggle("toggleButton")
+			deleteButton.classList.toggle("toggleButton")
 		);
 	} else {
 		return (
 			deleteForm.classList.add("hidden"),
-			deleteSupplierButton.classList.remove("toggleButton")
+			deleteButton.classList.remove("toggleButton")
 		);
 	}
 }
-
-// OLD CODE - - - MAYBE LATER?
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-// // Id reference
-// let dropdownMenu = document.getElementById("nav");
-// let dropButton = document.getElementById("dropDownButton");
-
-// // Drop menu when clicked
-// dropButton.addEventListener("click", function (event) {
-// 	event.stopPropagation();
-// 	dropdownMenu.classList.toggle("hidden"); // Toggle hidden class on menu
-// });
-// // Close menu when user clicks outside of it
-// window.addEventListener("click", function (event) {
-// 	dropdownMenu.classList.add("hidden"); // Add hidden class to menu
-// });
-// //
-//
-//
-//
-//
-// let getButton = document.getElementById("supplierGet");
-// let getButtons = document.getElementById("get-all-suppliers");
-// let getButtons2 = document.getElementById("get-supplier-count");
-// let getButtons3 = document.getElementById("clear");
-
-// getButton.addEventListener("click", function (event) {
-// 	event.stopPropagation();
-// 	getButtons.classList.toggle("hidden");
-// 	getButtons2.classList.toggle("hidden");
-// 	getButtons3.classList.toggle("hidden");
-// });
-//
-//
-//
-//
-//
-// Table Page Selection
-// Table Page Selection
