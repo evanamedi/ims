@@ -15,8 +15,8 @@ class Table:
     SCHEMAS = {
         'suppliers': ["id", "supplier_name", "supplier_address", "supplier_contact"],
         'products': ["id", "supplier_id", "product_name", "product_description", "product_price", "product_quantity"],
-        'orders': ["id", "product_id", "order_date", "order_quantity"],
-        'customers': ["id", "customer_id", "customer_address", "customer_contact"],
+        'orders': ["id", "product_id", "customer_id", "order_date", "order_quantity"],
+        'customers': ["id", "customer_name", "customer_address", "customer_contact"],
         'sales': ["id", "product_id", "customer_id", "sale_date", "sale_quantity"]
         
     }
@@ -66,6 +66,7 @@ class Table:
     def update_field_in_db(self, id, field, new_value):     # Update any field in the row
         try:
             if field not in self.SCHEMAS[self.table_name]:
+                print(f"Invalid field: {field}, ALSO: id: {id}, {new_value}")
                 raise ValueError(f"Invalid field: {field}")
             query = f"UPDATE {self.table_name} SET {field} = %s WHERE id = %s"
             with db_cursor() as cursor:
@@ -73,6 +74,7 @@ class Table:
                 logger.info("Field Updated Successfully")
         except db.Error as e:
             logger.error(f"Error Updating Field: {e}")
+            print(f"Invalid field: {field}, ALSO: id: {id}, {new_value}")
             raise
 
     def select_all_from_db(self):   # Select all rows from a table

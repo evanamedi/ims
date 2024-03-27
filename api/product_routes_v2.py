@@ -44,10 +44,7 @@ def get_product_by_id(product_id):
 def delete_product(product_id):
     try:
         product_table = Table("products")
-        data = product_table.delete_from_db(product_id)
-        if not data:
-            logger.error("Product Not Found")
-            return format_response(400, "Product Not Found")
+        product_table.delete_from_db(product_id)
     except ValueError as e:
         logger.error(str(e))
         return format_response(400, str(e))

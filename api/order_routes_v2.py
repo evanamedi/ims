@@ -7,7 +7,7 @@ logger = configure_logger()
 order_routes_v2 = Blueprint("order_routes_v2", __name__)
 
 # save_to_db
-@order_routes_v2.route("/v2/order/", methods=["POST"])
+@order_routes_v2.route("/v2/order/add", methods=["POST"])
 def add_order():
     try:
         data = request.get_json()
@@ -25,7 +25,7 @@ def add_order():
     return format_response(200, "Order Added Successfully")
 
 # read_id_from_db()
-@order_routes_v2.route("/v2/order/<int:order_id>", methods=["GET"])
+@order_routes_v2.route("/v2/order/get/<int:order_id>", methods=["GET"])
 def get_order_by_id(order_id):
     try:
         order_table = Table("orders")
@@ -44,10 +44,7 @@ def get_order_by_id(order_id):
 def delete_order(order_id):
     try:
         order_table = Table("orders")
-        data = order_table.delete_from_db(order_id)
-        if not data:
-            logger.error("Order Not Found")
-            return format_response(400, "Order Not Found")
+        order_table.delete_from_db(order_id)
     except ValueError as e:
         logger.error(str(e))
         return format_response(400, str(e))
@@ -82,7 +79,7 @@ def get_all_orders():
     return format_response(200, "All Orders Successfully Retrieved", all_orders)
 
 # count_rows_in_db()
-@order_routes_v2.route("/v2/order/order_count", methods=["GET"])
+@order_routes_v2.route("/v2/order/count", methods=["GET"])
 def get_order_count():
     order_table = Table("orders")
     order_count = order_table.count_rows_in_db()
@@ -92,17 +89,17 @@ def get_order_count():
     logger.info("Order Count Retrieved Successfully")
     return format_response(200, "Order Count Retrieved Successfully", order_count)
 
-# select_row_by_field()
-@order_routes_v2.route("/v2/order/select/<string:field>/<string:value>", methods=["GET"])
-def get_all_orders_by_field(field, value):
-    try:
-        order_table = Table("orders")
-        data = order_table.select_row_by_field(field, value)
-        if not data:
-            logger.error("Field or Value not found")
-            return format_response(400, "Field or Value Not Found")
-    except ValueError as e:
-        logger.error(str(e))
-        return format_response(400, str(e))
-    logger.info("Selected Rows Returned")
-    return format_response(200, "Selected Rows Returned", data)
+# # select_row_by_field()
+# @order_routes_v2.route("/v2/order/select/<string:field>/<string:value>", methods=["GET"])
+# def get_all_orders_by_field(field, value):
+#     try:
+#         order_table = Table("orders")
+#         data = order_table.select_row_by_field(field, value)
+#         if not data:
+#             logger.error("Field or Value not found")
+#             return format_response(400, "Field or Value Not Found")
+#     except ValueError as e:
+#         logger.error(str(e))
+#         return format_response(400, str(e))
+#     logger.info("Selected Rows Returned")
+#     return format_response(200, "Selected Rows Returned", data)

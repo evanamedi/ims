@@ -7,7 +7,7 @@ logger = configure_logger()
 sale_routes_v2 = Blueprint("sale_routes_v2", __name__)
 
 # save_to_db
-@sale_routes_v2.route("/v2/sale", methods=["POST"])
+@sale_routes_v2.route("/v2/sale/add", methods=["POST"])
 def add_sale():
     try:
         data = request.get_json()
@@ -25,7 +25,7 @@ def add_sale():
     return format_response(200, "Sale Added Successfully")
 
 # read_id_from_db()
-@sale_routes_v2.route("/v2/sale/<int:sale_id>", methods=["GET"])
+@sale_routes_v2.route("/v2/sale/get/<int:sale_id>", methods=["GET"])
 def get_sale_by_id(sale_id):
     try:
         sale_table = Table("sales")
@@ -44,10 +44,7 @@ def get_sale_by_id(sale_id):
 def delete_sale(sale_id):
     try:
         sale_table = Table("sales")
-        data = sale_table.delete_from_db(sale_id)
-        if not data:
-            logger.error("Sale Not Found")
-            return format_response(400, "Sale Not Found")
+        sale_table.delete_from_db(sale_id)
     except ValueError as e:
         logger.error(str(e))
         return format_response(400, str(e))
@@ -82,7 +79,7 @@ def get_all_sales():
     return format_response(200, "All Sales Successfully Retrieved", all_sales)
 
 # count_rows_in_db()
-@sale_routes_v2.route("/v2/sale/sale_count", methods=["GET"])
+@sale_routes_v2.route("/v2/sale/count", methods=["GET"])
 def get_sale_count():
     sale_table = Table("sales")
     sale_count = sale_table.count_rows_in_db()

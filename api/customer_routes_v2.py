@@ -7,7 +7,7 @@ logger = configure_logger()
 customer_routes_v2 = Blueprint("customer_routes_v2", __name__)
 
 # save_to_db
-@customer_routes_v2.route("/v2/customer", methods=["POST"])
+@customer_routes_v2.route("/v2/customer/add", methods=["POST"])
 def add_customer():
     try:
         data = request.get_json()
@@ -25,7 +25,7 @@ def add_customer():
     return format_response(200, "Customer Added Successfully")
 
 # read_id_from_db()
-@customer_routes_v2.route("/v2/customer/<int:customer_id>", methods=["GET"])
+@customer_routes_v2.route("/v2/customer/get/<int:customer_id>", methods=["GET"])
 def get_customer_by_id(customer_id):
     try:
         customer_table = Table("customers")
@@ -44,10 +44,7 @@ def get_customer_by_id(customer_id):
 def delete_customer(customer_id):
     try:
         customer_table = Table("customers")
-        data = customer_table.delete_from_db(customer_id)
-        if not data:
-            logger.error("Customer Not Found")
-            return format_response(400, "Customer Not Found")
+        customer_table.delete_from_db(customer_id)
     except ValueError as e:
         logger.error(str(e))
         return format_response(400, str(e))
@@ -82,7 +79,7 @@ def get_all_customers():
     return format_response(200, "All Customers Successfully Retrieved", all_customers)
 
 # count_rows_in_db()
-@customer_routes_v2.route("/v2/customer/customer_count", methods=["GET"])
+@customer_routes_v2.route("/v2/customer/count", methods=["GET"])
 def get_customer_count():
     customer_table = Table("customers")
     customer_count = customer_table.count_rows_in_db()
@@ -92,17 +89,17 @@ def get_customer_count():
     logger.info("Customer Count Retrieved Successfully")
     return format_response(200, "Customer Count Retrieved Successfully", customer_count)
 
-# select_row_by_field()
-@customer_routes_v2.route("/v2/customer/select/<string:field>/<string:value>", methods=["GET"])
-def get_all_customers_by_field(field, value):
-    try:
-        customer_table = Table("customers")
-        data = customer_table.select_row_by_field(field, value)
-        if not data:
-            logger.error("Field or Value not found")
-            return format_response(400, "Field or Value Not Found")
-    except ValueError as e:
-        logger.error(str(e))
-        return format_response(400, str(e))
-    logger.info("Selected Rows Returned")
-    return format_response(200, "Selected Rows Returned", data)
+# # select_row_by_field()
+# @customer_routes_v2.route("/v2/customer/select/<string:field>/<string:value>", methods=["GET"])
+# def get_all_customers_by_field(field, value):
+#     try:
+#         customer_table = Table("customers")
+#         data = customer_table.select_row_by_field(field, value)
+#         if not data:
+#             logger.error("Field or Value not found")
+#             return format_response(400, "Field or Value Not Found")
+#     except ValueError as e:
+#         logger.error(str(e))
+#         return format_response(400, str(e))
+#     logger.info("Selected Rows Returned")
+#     return format_response(200, "Selected Rows Returned", data)

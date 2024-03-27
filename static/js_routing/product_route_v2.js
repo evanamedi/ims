@@ -65,7 +65,7 @@ function updateProduct(event) {
 	let url = `/v2/product/update/${productID}/${productField}`;
 	let method = "PUT";
 	let data = {
-		[field]: newValue,
+		[productField]: newValue,
 	};
 
 	prepareAndSendData(method, data, url);
@@ -80,7 +80,7 @@ function updateProduct(event) {
 document.getElementById("getFormID").addEventListener("submit", getProductById);
 
 function getProductById(event) {
-	event.preventDefault("loading").style.display = "block";
+	event.preventDefault();
 	document.getElementById("loading").style.display = "block";
 
 	let productID = document.getElementById("get_product_by_id").value;
@@ -109,7 +109,7 @@ function deleteProduct(event) {
 	event.preventDefault();
 	document.getElementById("loading").style.display = "block";
 
-	let productID = document.getElementById("delete_product_by_id");
+	let productID = document.getElementById("delete_product_by_id").value;
 
 	if (!validateInput(productID)) {
 		return;
@@ -164,6 +164,10 @@ const columnHeaders = [
 	"Price",
 	"Quantity",
 ];
+
+//
+//
+//
 
 function clearFields() {
 	const allFields = [
