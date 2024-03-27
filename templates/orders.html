@@ -1,2 +1,44 @@
 {% extends "base.html" %} {% block title %} Orders {% endblock %} {% block
-placeholderSearch %} Search orders... {% endblock %}
+placeholderSearch %} Search orders... {% endblock %} {% block
+dataBaseInputFields %}
+
+<div class="databaseInputFields">
+	{% for form in form_list %}
+	<form class="hidden flex flex-col" id="{{ form[0] }}">
+		<div class="formDiv-3">
+			{% for value in form[1] %}
+			<div class="formDiv-4">
+				<label class="inputText" for="{{ value.for_label }}"
+					>{{ value.text }}</label
+				><br />
+				{% if value.type == 'select' %}
+				<select
+					class="formInput"
+					id="{{ value.id }}"
+					name="{{ value.name }}"
+				>
+					<option></option>
+					{% for option_id, option_text in value.options.items() %}
+					<option value="{{ option_id }}">{{ option_text }}</option>
+					{% endfor %}</select
+				><br />
+				{% else %}
+				<input
+					class="formInput"
+					type="text"
+					id="{{ value.id }}"
+					name="{{ value.name }}"
+				/><br />
+				{% endif %}
+			</div>
+			{% endfor %}
+			<div>
+				<div class="submit">
+					<input class="submitButton" type="submit" value="Submit" />
+				</div>
+			</div>
+		</div>
+	</form>
+	{% endfor %}
+</div>
+{% endblock %}

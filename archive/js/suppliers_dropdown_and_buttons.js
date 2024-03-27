@@ -2,77 +2,83 @@ let createButton = document.getElementById("createButtonID");
 let updateButton = document.getElementById("updateButtonID");
 let getByIdButton = document.getElementById("getByIdButtonID");
 let deleteButton = document.getElementById("deleteButtonID");
+//
+//
 
-// ADD A NEW SUPPLIER
-let createForm = document.getElementById("add-supplier");
+let createForm = document.getElementById("createFormID");
+let updateForm = document.getElementById("updateFormID");
+let getForm = document.getElementById("getFormID");
+let deleteForm = document.getElementById("deleteFormID");
+
+//
+//
+
+// ADD FORM
 // TOGGLE ON
 createButton.addEventListener("click", function (event) {
 	event.stopPropagation();
-	createSupplier(true);
-	deleteSupplier(false);
-	getSupplier(false);
-	updateSupplier(false);
+	createFormFunction(true);
+	deleteFormFunction(false);
+	getFormFunction(false);
+	updateFormFunction(false);
 });
 // TOGGLE OFF
 window.addEventListener("click", function (event) {
-	if (!createForm.contains(event.target)) createSupplier(false);
+	if (!createForm.contains(event.target)) createFormFunction(false);
 });
 
 //
 //
 //
 
-// UPDATE SUPPLIER
-let updateField = document.getElementById("update-supplier-field");
+// UPDATE FORM
 // TOGGLE ON
 updateButton.addEventListener("click", function (event) {
 	event.stopPropagation();
-	updateSupplier(true);
-	createSupplier(false);
-	getSupplier(false);
-	deleteSupplier(false);
+	updateFormFunction(true);
+	createFormFunction(false);
+	getFormFunction(false);
+	deleteFormFunction(false);
 });
 // TOGGLE OFF
 window.addEventListener("click", function (event) {
-	if (!updateField.contains(event.target)) updateSupplier(false);
+	if (!updateForm.contains(event.target)) updateFormFunction(false);
 });
 
 //
 //
 //
 
-// GET SUPPLIER BY ID
-let getFormID = document.getElementById("get-supplier-by-id");
+// GET FORM
 // TOGGLE ON
 getByIdButton.addEventListener("click", function (event) {
 	event.stopPropagation();
-	getSupplier(true);
-	createSupplier(false);
-	updateSupplier(false);
-	deleteSupplier(false);
+	getFormFunction(true);
+	createFormFunction(false);
+	updateFormFunction(false);
+	deleteFormFunction(false);
 });
 // TOGGLE OFF
 window.addEventListener("click", function (event) {
-	if (!getFormID.contains(event.target)) getSupplier(false);
+	if (!getForm.contains(event.target)) getFormFunction(false);
 });
 
 //
 //
 //
 
-// DELETE SUPPLIER
-let deleteForm = document.getElementById("delete-supplier");
+// DELETE FORM
 // TOGGLE ON
 deleteButton.addEventListener("click", function (event) {
 	event.stopPropagation();
-	deleteSupplier(true);
-	createSupplier(false);
-	updateSupplier(false);
-	getSupplier(false);
+	deleteFormFunction(true);
+	createFormFunction(false);
+	updateFormFunction(false);
+	getFormFunction(false);
 });
 // TOGGLE OFF
 window.addEventListener("click", function (event) {
-	if (!deleteForm.contains(event.target)) deleteSupplier(false);
+	if (!deleteForm.contains(event.target)) deleteFormFunction(false);
 });
 
 //
@@ -86,8 +92,8 @@ window.addEventListener("click", function (event) {
 //
 //
 
-// CREATE SUPPLIER BUTTON FUNCTION
-function createSupplier(bool) {
+// CREATE BUTTON FUNCTION
+function createFormFunction(bool) {
 	if (bool) {
 		return (
 			createForm.classList.toggle("hidden"),
@@ -100,43 +106,39 @@ function createSupplier(bool) {
 		);
 	}
 }
-//
-//
-//
-//
-//
-// UPDATE SUPPLIER BUTTON FUNCTION
-function updateSupplier(bool) {
+
+// UPDATE BUTTON FUNCTION
+function updateFormFunction(bool) {
 	if (bool) {
 		return (
-			updateField.classList.toggle("hidden"),
+			updateForm.classList.toggle("hidden"),
 			updateButton.classList.toggle("toggleButton")
 		);
 	} else {
 		return (
-			updateField.classList.add("hidden"),
+			updateForm.classList.add("hidden"),
 			updateButton.classList.remove("toggleButton")
 		);
 	}
 }
 
-// GET SUPPLIER BUTTON FUNCTION
-function getSupplier(bool) {
+// GET BUTTON FUNCTION
+function getFormFunction(bool) {
 	if (bool) {
 		return (
-			getFormID.classList.toggle("hidden"),
+			getForm.classList.toggle("hidden"),
 			getByIdButton.classList.toggle("toggleButton")
 		);
 	} else {
 		return (
-			getFormID.classList.add("hidden"),
+			getForm.classList.add("hidden"),
 			getByIdButton.classList.remove("toggleButton")
 		);
 	}
 }
 
-// DELETE SUPPLIER BUTTON FUNCTION
-function deleteSupplier(bool) {
+// DELETE BUTTON FUNCTION
+function deleteFormFunction(bool) {
 	if (bool) {
 		return (
 			deleteForm.classList.toggle("hidden"),

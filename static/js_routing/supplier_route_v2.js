@@ -4,7 +4,7 @@ so were doing to decouple them here, and break the logic into
 functions that can accept data from any of the pages */
 
 // ADD SUPPLIER
-document.getElementById("add-supplier").addEventListener("submit", addSupplier);
+document.getElementById("createFormID").addEventListener("submit", addSupplier);
 
 function addSupplier(event) {
 	event.preventDefault();
@@ -37,24 +37,23 @@ function addSupplier(event) {
 
 // UPDATE SUPPLIER
 document
-	.getElementById("update-supplier-field")
+	.getElementById("updateFormID")
 	.addEventListener("submit", updateSupplier);
 
 function updateSupplier(event) {
 	event.preventDefault();
 	document.getElementById("loading").style.display = "block";
-	// Get input data
+
 	let supplier_id = document.getElementById("update-id").value;
 	let field = document.getElementById("field").value;
 	let newValue = document.getElementById("new-value").value;
-	// Validate input
+
 	if (!validateInput(supplier_id, field, newValue)) {
-		return; // If it returns false, script will end early
+		return;
 	}
 
-	let url = `/v2/supplier/update/${supplier_id}/${field}`; // API route
-	let method = "PUT"; // Method
-	// Data
+	let url = `/v2/supplier/update/${supplier_id}/${field}`;
+	let method = "PUT";
 	let data = {
 		[field]: newValue,
 	};
@@ -69,21 +68,21 @@ function updateSupplier(event) {
 
 // GET SUPPLIER BY ID
 document
-	.getElementById("get-supplier-by-id")
+	.getElementById("getFormID")
 	.addEventListener("submit", getSupplierById);
 
 function getSupplierById(event) {
 	event.preventDefault();
 	document.getElementById("loading").style.display = "block";
-	// Get input data
+
 	let supplier_id = document.getElementById("get-supplier-id").value;
-	// Validate input
+
 	if (!validateInput(supplier_id)) {
-		return; // If it returns false, script will end early
+		return;
 	}
 
-	let url = `/v2/supplier/get/${supplier_id}`; // API route
-	let method = "GET"; // Method
+	let url = `/v2/supplier/get/${supplier_id}`;
+	let method = "GET";
 
 	prepareAndSendRequest(method, url);
 	clearFields();
@@ -95,21 +94,21 @@ function getSupplierById(event) {
 
 // DELETE SUPPLIER
 document
-	.getElementById("delete-supplier")
+	.getElementById("deleteFormID")
 	.addEventListener("submit", deleteSupplier);
 
 function deleteSupplier(event) {
 	event.preventDefault();
 	document.getElementById("loading").style.display = "block";
-	// Get input data
+
 	let supplier_id = document.getElementById("delete-supplier-id").value;
-	// Validate input
+
 	if (!validateInput(supplier_id)) {
-		return; // If it returns false, script will end early
+		return;
 	}
 
-	let url = `/v2/supplier/delete/${supplier_id}`; // API route
-	let method = "DELETE"; // Method
+	let url = `/v2/supplier/delete/${supplier_id}`;
+	let method = "DELETE";
 
 	prepareAndSendRequest(method, url);
 	clearFields();
@@ -120,15 +119,13 @@ function deleteSupplier(event) {
 //
 
 // GET ALL SUPPLIERS
-document
-	.getElementById("get-all-suppliers")
-	.addEventListener("click", getAllSuppliers);
+document.getElementById("getAll").addEventListener("click", getAllSuppliers);
 
 function getAllSuppliers() {
 	document.getElementById("loading").style.display = "block";
 
-	let url = "/v2/supplier/all"; // API route
-	let method = "GET"; // Method
+	let url = "/v2/supplier/all";
+	let method = "GET";
 
 	prepareAndSendRequest(method, url);
 }
@@ -138,16 +135,14 @@ function getAllSuppliers() {
 //
 
 // GET SUPPLIER COUNT
-document
-	.getElementById("get-supplier-count")
-	.addEventListener("click", getSupplierCount);
+document.getElementById("getCount").addEventListener("click", getSupplierCount);
 
 function getSupplierCount() {
 	document.getElementById("loading").style.display = "block";
 
 	let count = true;
-	let url = "/v2/supplier/count"; // API route
-	let method = "GET"; // Method
+	let url = "/v2/supplier/count";
+	let method = "GET";
 
 	prepareAndSendRequest(method, url, count);
 }
@@ -156,6 +151,7 @@ function getSupplierCount() {
 //
 //
 
+// DISPLAY TABLE HEADERS
 const columnHeaders = [
 	"Supplier ID",
 	"Supplier Name",
@@ -163,14 +159,18 @@ const columnHeaders = [
 	"Supplier Contact",
 ];
 
-// Clear input fields
 function clearFields() {
-	document.getElementById("supplier_name").value = "";
-	document.getElementById("supplier_address").value = "";
-	document.getElementById("supplier_contact").value = "";
-	document.getElementById("update-id").value = "";
-	document.getElementById("field").value = "";
-	document.getElementById("new-value").value = "";
-	document.getElementById("get-supplier-id").value = "";
-	document.getElementById("delete-supplier-id").value = "";
+	const allFields = [
+		"supplier_name",
+		"supplier_address",
+		"supplier_contact",
+		"update-id",
+		"field",
+		"new-value",
+		"get-supplier-id",
+		"delete-supplier-id",
+	];
+	for (let field of allFields) {
+		document.getElementById(field).value = "";
+	}
 }

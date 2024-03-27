@@ -27,7 +27,7 @@ def products():
 
 @app.route("/customers")
 def customers():
-    return render_template("customers.html", form_lsit=customers_form_list)
+    return render_template("customers.html", form_list=customers_form_list)
 
 @app.route("/orders")
 def orders():

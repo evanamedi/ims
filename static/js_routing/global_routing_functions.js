@@ -126,8 +126,7 @@ function generateHTML(dataArray, count) {
 		for (let header of columnHeaders) {
 			html += `<th>${header}</th>`;
 		}
-		html += `<tr><td class="blankRow"></td><td class="blankRow"></td><td class="blankRow"></td><td class="blankRow"></td><td class="blankRow"></td></tr>`;
-		html += `<tr><td class="blankRow"></td><td class="blankRow"></td><td class="blankRow"></td><td class="blankRow"></td><td class="blankRow"></td></tr>`;
+
 		html += "</tr>";
 		for (let data of dataArray) {
 			// Loop over each data array in dataArray
@@ -143,3 +142,6 @@ function generateHTML(dataArray, count) {
 		return html; // Return HTML string
 	}
 }
+
+// html += `<tr class="blankRow"></tr>`;
+// html += `<tr class="blankRow"></tr>`;

@@ -7,7 +7,7 @@ logger = configure_logger()
 product_routes_v2 = Blueprint("product_routes_v2", __name__)
 
 #save_to_db
-@product_routes_v2.route("/v2/product", methods=["POST"])
+@product_routes_v2.route("/v2/product/add", methods=["POST"])
 def add_product():
     try:
         data = request.get_json()
@@ -25,7 +25,7 @@ def add_product():
     return format_response(200, "Product Added Successfully")
 
 # read_id_from_db()
-@product_routes_v2.route("/v2/product/<int:product_id>", methods=["GET"])
+@product_routes_v2.route("/v2/product/get/<int:product_id>", methods=["GET"])
 def get_product_by_id(product_id):
     try:
         product_table = Table("products")
@@ -82,7 +82,7 @@ def get_all_products():
     return format_response(200, "All Products Successfully Retrieved", all_products)
 
 # count_rows_in_db()
-@product_routes_v2.route("/v2/product/product_count", methods=["GET"])
+@product_routes_v2.route("/v2/product/count", methods=["GET"])
 def get_product_count():
     product_table = Table("products")
     product_count = product_table.count_rows_in_db()

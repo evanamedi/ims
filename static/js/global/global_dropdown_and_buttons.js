@@ -15,5 +15,3 @@ window.addEventListener("click", function (event) {
 //
 //
 //
-
-// Buttons for fields (create, update, delete, etc...)
