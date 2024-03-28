@@ -1,3 +1,33 @@
+// GET ALL PRODUCTS AND DROP DOWN SELECTIONS
+window.onload = function () {
+	getAllOrders();
+	getAllCustomers();
+	getAllProducts();
+	dropDownOptions();
+};
+
+// GENERATE OPTIONS FOR DROP DOWN MENU
+function dropDownOptions() {
+	orderData = JSON.parse(sessionStorage.getItem("orders"));
+	document.getElementById("update_order_by_id").innerHTML = selectMenu(
+		orderData.data
+	);
+	document.getElementById("get_order_by_id").innerHTML = selectMenu(
+		orderData.data
+	);
+	document.getElementById("delete_order_by_id").innerHTML = selectMenu(
+		orderData.data
+	);
+	productData = JSON.parse(sessionStorage.getItem("products"));
+	document.getElementById("add_order_product_id").innerHTML = selectMenu(
+		productData.data
+	);
+	customerData = JSON.parse(sessionStorage.getItem("customers"));
+	document.getElementById("add_order_customer_id").innerHTML = selectMenu(
+		customerData.data
+	);
+}
+
 // CREATE AN ORDER
 document.getElementById("createFormID").addEventListener("submit", addOrder);
 
@@ -109,13 +139,25 @@ function deleteOrder(event) {
 //
 //
 
-// GET ALL ORDERS
-document.getElementById("getAll").addEventListener("click", getAllOrders);
-
+// GET ALL ORDERS & PRODUCTS & CUSTOMERS
+// orders
 function getAllOrders() {
 	document.getElementById("loading").style.display = "block";
-
 	let url = "/v2/order/all";
+	let method = "GET";
+	prepareAndSendRequest(method, url);
+}
+// customers
+function getAllCustomers() {
+	document.getElementById("loading").style.display = "block";
+	let url = "/v2/customer/all";
+	let method = "GET";
+	prepareAndSendRequest(method, url);
+}
+// products
+function getAllProducts() {
+	document.getElementById("loading").style.display = "block";
+	let url = "/v2/product/all";
 	let method = "GET";
 	prepareAndSendRequest(method, url);
 }
@@ -124,17 +166,27 @@ function getAllOrders() {
 //
 //
 
-// GET ORDER COUNT
+// DISPLAY ALL ORDERS
+document.getElementById("getAll").addEventListener("click", displayAllOrders);
+function displayAllOrders() {
+	data = JSON.parse(sessionStorage.getItem("orders"));
+	document.getElementById("response").innerHTML = generateHTML(data.data);
+	console.log(data.message[0]);
+}
+
+//
+//
+//
+
+// DISPLAY ORDER COUNT
 document.getElementById("getCount").addEventListener("click", getOrderCount);
 
 function getOrderCount() {
-	document.getElementById("loading").style.display = "block";
-
-	let count = true;
-	let url = "/v2/order/count";
-	let method = "GET";
-
-	prepareAndSendRequest(method, url, count);
+	let data = JSON.parse(sessionStorage.getItem("orders"));
+	document.getElementById("response").innerHTML = generateHTML(
+		data.data.length,
+		true
+	);
 }
 
 //

@@ -76,7 +76,7 @@ def get_all_products():
         logger.error("No Products In Database")
         return format_response(400, "No Products In Database")
     logger.info("All Products Successfully Retrieved")
-    return format_response(200, "All Products Successfully Retrieved", all_products)
+    return format_response(200, ("products", "Successfully Retrieved"), all_products)
 
 # count_rows_in_db()
 @product_routes_v2.route("/v2/product/count", methods=["GET"])

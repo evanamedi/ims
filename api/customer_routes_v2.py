@@ -76,7 +76,7 @@ def get_all_customers():
         logger.error("No Customers In Database")
         return format_response(400, "No Customers In Database")
     logger.info("All Customers Successfully Retrieved")
-    return format_response(200, "All Customers Successfully Retrieved", all_customers)
+    return format_response(200,  ("customers", "Successfully Retrieved"), all_customers)
 
 # count_rows_in_db()
 @customer_routes_v2.route("/v2/customer/count", methods=["GET"])

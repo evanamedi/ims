@@ -3,6 +3,26 @@ however i don't want to repeat this code with the other pages
 so were doing to decouple them here, and break the logic into
 functions that can accept data from any of the pages */
 
+// GET ALL PRODUCTS AND DROP DOWN SELECTIONS
+window.onload = function () {
+	getAllSuppliers();
+	dropDownOptions();
+};
+
+// GENERATE OPTIONS FOR DROP DOWN MENU
+function dropDownOptions() {
+	supplierData = JSON.parse(sessionStorage.getItem("suppliers"));
+	document.getElementById("update-id").innerHTML = selectMenu(
+		supplierData.data
+	);
+	document.getElementById("get-supplier-id").innerHTML = selectMenu(
+		supplierData.data
+	);
+	document.getElementById("delete-supplier-id").innerHTML = selectMenu(
+		supplierData.data
+	);
+}
+
 // ADD SUPPLIER
 document.getElementById("createFormID").addEventListener("submit", addSupplier);
 
@@ -119,8 +139,6 @@ function deleteSupplier(event) {
 //
 
 // GET ALL SUPPLIERS
-document.getElementById("getAll").addEventListener("click", getAllSuppliers);
-
 function getAllSuppliers() {
 	document.getElementById("loading").style.display = "block";
 
@@ -134,17 +152,29 @@ function getAllSuppliers() {
 //
 //
 
-// GET SUPPLIER COUNT
+// DISPLAY ALL SUPPLIERS
+document
+	.getElementById("getAll")
+	.addEventListener("click", displayAllSuppliers);
+function displayAllSuppliers() {
+	data = JSON.parse(sessionStorage.getItem("suppliers"));
+	document.getElementById("response").innerHTML = generateHTML(data.data);
+	console.log(data.message[0]);
+}
+
+//
+//
+//
+
+// DISPLAY SUPPLIER COUNT
 document.getElementById("getCount").addEventListener("click", getSupplierCount);
 
 function getSupplierCount() {
-	document.getElementById("loading").style.display = "block";
-
-	let count = true;
-	let url = "/v2/supplier/count";
-	let method = "GET";
-
-	prepareAndSendRequest(method, url, count);
+	let data = JSON.parse(sessionStorage.getItem("suppliers"));
+	document.getElementById("response").innerHTML = generateHTML(
+		data.data.length,
+		true
+	);
 }
 
 //

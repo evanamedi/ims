@@ -1,3 +1,33 @@
+// GET ALL PRODUCTS AND DROP DOWN SELECTIONS
+window.onload = function () {
+	getAllCustomers();
+	getAllProducts();
+	dropDownOptions();
+	getAllSales();
+};
+
+// GENERATE OPTIONS FOR DROP DOWN MENU
+function dropDownOptions() {
+	saleData = JSON.parse(sessionStorage.getItem("sales"));
+	document.getElementById("update_sale_by_id").innerHTML = selectMenu(
+		saleData.data
+	);
+	document.getElementById("get_sale_by_id").innerHTML = selectMenu(
+		saleData.data
+	);
+	document.getElementById("delete_sale_by_id").innerHTML = selectMenu(
+		saleData.data
+	);
+	productData = JSON.parse(sessionStorage.getItem("products"));
+	document.getElementById("add_sale_product_id").innerHTML = selectMenu(
+		productData.data
+	);
+	customerData = JSON.parse(sessionStorage.getItem("customers"));
+	document.getElementById("add_sale_customer_id").innerHTML = selectMenu(
+		customerData.data
+	);
+}
+
 // CREATE A SALE
 document.getElementById("createFormID").addEventListener("submit", addSale);
 
@@ -109,15 +139,39 @@ function deleteSale(event) {
 //
 //
 
-// GET ALL SALES
-document.getElementById("getAll").addEventListener("click", getAllSales);
-
+// GET ALL SALES & PRODUCTS & CUSTOMERS
+// sales
 function getAllSales() {
 	document.getElementById("loading").style.display = "block";
-
 	let url = "/v2/sale/all";
 	let method = "GET";
 	prepareAndSendRequest(method, url);
+}
+// customers
+function getAllCustomers() {
+	document.getElementById("loading").style.display = "block";
+	let url = "/v2/customer/all";
+	let method = "GET";
+	prepareAndSendRequest(method, url);
+}
+// products
+function getAllProducts() {
+	document.getElementById("loading").style.display = "block";
+	let url = "/v2/product/all";
+	let method = "GET";
+	prepareAndSendRequest(method, url);
+}
+
+//
+//
+//
+
+// DISPLAY ALL SALES
+document.getElementById("getAll").addEventListener("click", displayAllSales);
+function displayAllSales() {
+	data = JSON.parse(sessionStorage.getItem("sales"));
+	document.getElementById("response").innerHTML = generateHTML(data.data);
+	console.log(data.message[0]);
 }
 
 //
@@ -128,13 +182,11 @@ function getAllSales() {
 document.getElementById("getCount").addEventListener("click", getSaleCount);
 
 function getSaleCount() {
-	document.getElementById("loading").style.display = "block";
-
-	let count = true;
-	let url = "/v2/order/count";
-	let method = "GET";
-
-	prepareAndSendRequest(method, url, count);
+	let data = JSON.parse(sessionStorage.getItem("sales"));
+	document.getElementById("response").innerHTML = generateHTML(
+		data.data.length,
+		true
+	);
 }
 
 //

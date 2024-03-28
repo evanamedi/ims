@@ -87,11 +87,11 @@ function sendRequest(url, options, count) {
 		// Log the response data to the console
 		.then((data) => {
 			console.log(data);
+			console.log(data.message[0]);
 			if (data.data[0] !== null) {
-				// Display response in element with id 'response'
-				document.getElementById("response").innerHTML = generateHTML(
-					data.data,
-					count
+				sessionStorage.setItem(
+					`${data.message[0]}`,
+					JSON.stringify(data)
 				);
 			}
 		})
@@ -117,7 +117,7 @@ function sendRequest(url, options, count) {
 function generateHTML(dataArray, count) {
 	if (count) {
 		// Function to display received data in HTML- takes an array of data objects as arg
-		let html = `<div>Count: ${dataArray[0][0]}</div>`;
+		let html = `<div>Count: ${dataArray}</div>`;
 		return html;
 		// Return HTML string
 	} else {
@@ -143,5 +143,12 @@ function generateHTML(dataArray, count) {
 	}
 }
 
-// html += `<tr class="blankRow"></tr>`;
-// html += `<tr class="blankRow"></tr>`;
+// For generating drop down menu selection that changes dynamically
+function selectMenu(selectionData) {
+	let htmlOption = `<option></option>`;
+
+	for (let data of selectionData) {
+		htmlOption += `<option>${data[0]}</option>`;
+	}
+	return htmlOption;
+}

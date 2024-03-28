@@ -76,7 +76,7 @@ def get_all_sales():
         logger.error("No Sales In Database")
         return format_response(400, "No Sales In Database")
     logger.info("All Sales Successfully Retrieved")
-    return format_response(200, "All Sales Successfully Retrieved", all_sales)
+    return format_response(200, ("sales", "Successfully Retrieved"), all_sales)
 
 # count_rows_in_db()
 @sale_routes_v2.route("/v2/sale/count", methods=["GET"])

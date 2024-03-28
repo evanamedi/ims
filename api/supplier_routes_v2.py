@@ -76,7 +76,7 @@ def get_all_suppliers():
         logger.error("No Suppliers In Database")
         return format_response(400, "No Suppliers In Database")
     logger.info("All Suppliers Successfully Retrieved")
-    return format_response(200, "All Suppliers Successfully Retrieved", all_suppliers)
+    return format_response(200, ("suppliers", "Successfully Retrieved"), all_suppliers)
 
 # count_rows_in_db()
 @supplier_routes_v2.route("/v2/supplier/count", methods=["GET"])

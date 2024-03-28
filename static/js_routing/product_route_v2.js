@@ -1,3 +1,29 @@
+// GET ALL PRODUCTS AND DROP DOWN SELECTIONS
+window.onload = function () {
+	getAllProducts();
+	getAllSuppliers();
+	dropDownOptions();
+};
+
+// GENERATE OPTIONS FOR DROP DOWN MENU
+function dropDownOptions() {
+	productData = JSON.parse(sessionStorage.getItem("products"));
+	document.getElementById("update_product_by_id").innerHTML = selectMenu(
+		productData.data
+	);
+	document.getElementById("get_product_by_id").innerHTML = selectMenu(
+		productData.data
+	);
+	document.getElementById("delete_product_by_id").innerHTML = selectMenu(
+		productData.data
+	);
+
+	supplierData = JSON.parse(sessionStorage.getItem("suppliers"));
+	document.getElementById("add_product_supplier_id").innerHTML = selectMenu(
+		supplierData.data
+	);
+}
+
 // sup homie hows your day goin?
 // this is gonna be the client-side routing for adding a new product, cool?
 document.getElementById("createFormID").addEventListener("submit", addProduct);
@@ -126,34 +152,55 @@ function deleteProduct(event) {
 //
 //
 
-// GET ALL PRODUCTS
-document.getElementById("getAll").addEventListener("click", getAllProducts);
-
+// GET ALL PRODUCTS & SUPPLIERS
+// products
 function getAllProducts() {
 	document.getElementById("loading").style.display = "block";
 
 	let url = "/v2/product/all";
 	let method = "GET";
+
 	prepareAndSendRequest(method, url);
+}
+// suppliers
+function getAllSuppliers() {
+	document.getElementById("loading").style.display = "block";
+
+	let url = "/v2/supplier/all";
+	let method = "GET";
+
+	prepareAndSendRequest(method, url);
+}
+//
+//
+//
+
+// DISPLAY All PRODUCTS
+document.getElementById("getAll").addEventListener("click", displayAllProducts);
+function displayAllProducts() {
+	data = JSON.parse(sessionStorage.getItem("products"));
+	document.getElementById("response").innerHTML = generateHTML(data.data);
+	console.log(data.message[0]);
 }
 
 //
 //
 //
 
-// GET PRODUCT COUNT
-
+// DISPLAY PRODUCT COUNT
 document.getElementById("getCount").addEventListener("click", getProductCount);
 
 function getProductCount() {
-	document.getElementById("loading").style.display = "block";
-
-	let count = true;
-	let url = "/v2/product/count";
-	let method = "GET";
-
-	prepareAndSendRequest(method, url, count);
+	let data = JSON.parse(sessionStorage.getItem("products"));
+	document.getElementById("response").innerHTML = generateHTML(
+		data.data.length,
+		true
+	);
 }
+
+//
+//
+//
 
 // DISPLAY TABLE HEADERS
 const columnHeaders = [

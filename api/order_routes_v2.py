@@ -76,7 +76,7 @@ def get_all_orders():
         logger.error("No Orders In Database")
         return format_response(400, "No Orders In Database")
     logger.info("All Orders Successfully Retrieved")
-    return format_response(200, "All Orders Successfully Retrieved", all_orders)
+    return format_response(200, ("orders", "Successfully Retrieved"), all_orders)
 
 # count_rows_in_db()
 @order_routes_v2.route("/v2/order/count", methods=["GET"])

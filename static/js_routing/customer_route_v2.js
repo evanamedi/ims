@@ -1,3 +1,23 @@
+// GET ALL CUSTOMER DROP DOWN SELECTIONS
+window.onload = function () {
+	getAllCustomers();
+	dropDownOptions();
+};
+
+// GENERATE OPTIONS FOR DROP DOWN MENU
+function dropDownOptions() {
+	customerData = JSON.parse(sessionStorage.getItem("customers"));
+	document.getElementById("update_customer_by_id").innerHTML = selectMenu(
+		customerData.data
+	);
+	document.getElementById("get_customer_by_id").innerHTML = selectMenu(
+		customerData.data
+	);
+	document.getElementById("delete_customer_by_id").innerHTML = selectMenu(
+		customerData.data
+	);
+}
+
 // CREATE A CUSTOMER
 document.getElementById("createFormID").addEventListener("submit", addCustomer);
 
@@ -114,8 +134,6 @@ function deleteCustomer(event) {
 //
 
 // GET ALL CUSTOMERS
-document.getElementById("getAll").addEventListener("click", getAllCustomers);
-
 function getAllCustomers() {
 	document.getElementById("loading").style.display = "block";
 
@@ -128,17 +146,30 @@ function getAllCustomers() {
 //
 //
 
+// DISPLAY ALL CUSTOMERS
+document
+	.getElementById("getAll")
+	.addEventListener("click", displayAllCustomers);
+function displayAllCustomers() {
+	data = JSON.parse(sessionStorage.getItem("customers"));
+	document.getElementById("response").innerHTML = generateHTML(data.data);
+	console.log(data.message[0]);
+}
+
+//
+//
+//
+
 // GET CUSTOMER COUNT
 document.getElementById("getCount").addEventListener("click", getCustomerCount);
 
 function getCustomerCount() {
 	document.getElementById("loading").style.display = "block";
-
-	let count = true;
-	let url = "/v2/customer/count";
-	let method = "GET";
-
-	prepareAndSendRequest(method, url, count);
+	let data = JSON.parse(sessionStorage.getItem("customers"));
+	document.getElementById("response").innerHTML = generateHTML(
+		data.data.length,
+		true
+	);
 }
 
 //
@@ -152,6 +183,10 @@ const columnHeaders = [
 	"Customer Address",
 	"Customer Contact",
 ];
+
+//
+//
+//
 
 function clearFields() {
 	const allFields = [
