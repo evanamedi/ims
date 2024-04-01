@@ -1,0 +1,122 @@
+2024-03-14 20:17:25,253 | suppliers.suppliers | INFO | Supplier added successfully
+2024-03-14 20:22:04,657 | suppliers.suppliers | INFO | Supplier added successfully
+2024-03-14 20:35:14,425 | suppliers.suppliers | INFO | Supplier added successfully
+2024-03-14 20:37:10,625 | suppliers.suppliers | INFO | Supplier added successfully
+2024-03-14 20:43:35,509 | suppliers.suppliers | WARNING | Could not find supplier: (1,)
+2024-03-14 20:44:51,239 | suppliers.suppliers | WARNING | Could not find supplier: (1,)
+2024-03-14 20:46:56,207 | suppliers.suppliers | INFO | Supplier added successfully
+2024-03-14 20:54:53,246 | suppliers.suppliers | INFO | Supplier added successfully
+2024-03-14 21:27:51,756 | suppliers.suppliers | WARNING | Could not find supplier: (1,)
+2024-03-14 21:28:10,404 | suppliers.suppliers | INFO | Address Updated Successfully
+2024-03-15 12:13:43,111 | suppliers.suppliers | INFO | <built-in method capitalize of str object at 0x104f75ce0> Updated Successfully
+2024-03-15 12:15:04,154 | suppliers.suppliers | INFO | <built-in method capitalize of str object at 0x104f75aa0> Updated Successfully
+2024-03-15 12:17:58,290 | suppliers.suppliers | INFO | <built-in method capitalize of str object at 0x104f75b00> Updated Successfully
+2024-03-15 12:20:09,616 | suppliers.suppliers | INFO | <built-in method capitalize of str object at 0x10769da10> Updated Successfully
+2024-03-15 12:22:56,306 | suppliers.suppliers | INFO | <built-in method capitalize of str object at 0x107d9df20> Updated Successfully
+2024-03-15 12:23:24,215 | suppliers.suppliers | INFO | <built-in method capitalize of str object at 0x107d9d7a0> Updated Successfully
+2024-03-15 12:28:03,396 | suppliers.suppliers | INFO | <built-in method capitalize of str object at 0x107d9d860> Updated Successfully
+2024-03-15 13:52:50,941 | api.supplier_route | ERROR | Missing required fields: supplier_address
+2024-03-15 13:52:55,535 | api.supplier_route | ERROR | Missing required fields: supplier_address
+2024-03-15 13:52:56,260 | api.supplier_route | ERROR | Missing required fields: supplier_address
+2024-03-15 13:52:57,233 | api.supplier_route | ERROR | Missing required fields: supplier_address
+2024-03-15 13:52:57,778 | api.supplier_route | ERROR | Missing required fields: supplier_address
+2024-03-15 13:52:58,433 | api.supplier_route | ERROR | Missing required fields: supplier_address
+2024-03-15 13:53:10,325 | api.supplier_route | ERROR | Missing required fields: supplier_address
+2024-03-15 13:53:22,869 | api.supplier_route | ERROR | Missing required fields: supplier_address
+2024-03-15 13:54:59,998 | api.supplier_route | ERROR | Missing required fields: supplier_address
+2024-03-15 13:55:02,058 | api.supplier_route | ERROR | Missing required fields: supplier_address
+2024-03-15 13:55:03,153 | api.supplier_route | ERROR | Missing required fields: supplier_address
+2024-03-15 13:55:07,334 | api.supplier_route | ERROR | Missing required fields: supplier_address
+2024-03-15 13:55:08,432 | api.supplier_route | ERROR | Missing required fields: supplier_address
+2024-03-15 13:55:09,226 | api.supplier_route | ERROR | Missing required fields: supplier_address
+2024-03-15 13:57:57,630 | api.supplier_route | ERROR | Missing required fields: supplier_address
+2024-03-15 13:57:58,563 | api.supplier_route | ERROR | Missing required fields: supplier_address
+2024-03-15 13:58:04,348 | api.supplier_route | ERROR | Missing required fields: supplier_address
+2024-03-15 13:58:43,825 | api.supplier_route | ERROR | Missing required fields: supplier_address
+2024-03-15 14:00:24,926 | api.supplier_route | ERROR | Missing required fields: supplier_address
+2024-03-15 14:00:26,881 | api.supplier_route | ERROR | Missing required fields: supplier_address
+2024-03-15 14:00:33,193 | suppliers.suppliers | INFO | Supplier added successfully
+2024-03-15 14:00:36,172 | suppliers.suppliers | INFO | Supplier added successfully
+2024-03-15 14:00:42,858 | suppliers.suppliers | INFO | Supplier added successfully
+2024-03-15 14:00:51,411 | suppliers.suppliers | INFO | Supplier added successfully
+2024-03-15 14:04:54,921 | suppliers.suppliers | INFO | Supplier added successfully
+2024-03-15 14:05:00,813 | suppliers.suppliers | INFO | Supplier added successfully
+2024-03-15 14:05:07,802 | suppliers.suppliers | INFO | <built-in method capitalize of str object at 0x1022479c0> Updated Successfully
+2024-03-15 14:06:57,606 | suppliers.suppliers | INFO | Supplier added successfully
+2024-03-15 14:12:53,799 | suppliers.suppliers | WARNING | Could not find supplier: ('%macooo%',)
+2024-03-15 14:17:10,872 | suppliers.suppliers | WARNING | Insufficient Data for Creating Supplier
+2024-03-15 14:17:10,874 | api.supplier_route | ERROR | Failed to add supplier: Supplier name, address, and contact must not be empty
+2024-03-15 14:48:23,394 | suppliers.suppliers | INFO | <built-in method capitalize of str object at 0x104cf28e0> Updated Successfully
+2024-03-15 14:52:06,011 | suppliers.suppliers | INFO | <built-in method capitalize of str object at 0x104cb5b00> Updated Successfully
+2024-03-15 14:52:18,299 | suppliers.suppliers | INFO | <built-in method capitalize of str object at 0x104c02e20> Updated Successfully
+2024-03-15 14:52:36,487 | suppliers.suppliers | INFO | <built-in method capitalize of str object at 0x104c95fb0> Updated Successfully
+2024-03-15 15:02:10,319 | suppliers.suppliers | WARNING | Insufficient Data for Creating Supplier
+2024-03-15 15:02:10,321 | api.supplier_route | ERROR | Failed to add supplier: Supplier name, address, and contact must not be empty
+2024-03-15 15:02:11,788 | suppliers.suppliers | WARNING | Insufficient Data for Creating Supplier
+2024-03-15 15:02:11,788 | api.supplier_route | ERROR | Failed to add supplier: Supplier name, address, and contact must not be empty
+2024-03-15 15:09:09,254 | suppliers.suppliers | WARNING | Could not find supplier: ('%mo%',)
+2024-03-15 15:25:12,889 | suppliers.suppliers | WARNING | Insufficient Data for Creating Supplier
+2024-03-15 15:25:12,891 | api.supplier_route | ERROR | Failed to add supplier: Supplier name, address, and contact must not be empty
+2024-03-15 15:36:27,027 | suppliers.suppliers | WARNING | Insufficient Data for Creating Supplier
+2024-03-15 15:36:35,145 | suppliers.suppliers | WARNING | Insufficient Data for Creating Supplier
+2024-03-15 15:36:39,853 | suppliers.suppliers | WARNING | Insufficient Data for Creating Supplier
+2024-03-15 15:38:32,209 | suppliers.suppliers | WARNING | Insufficient Data for Creating Supplier
+2024-03-15 15:38:32,209 | api.supplier_route | ERROR | Failed to add supplier: Supplier name, address, and contact must not be empty
+2024-03-15 15:38:33,353 | suppliers.suppliers | WARNING | Insufficient Data for Creating Supplier
+2024-03-15 15:38:33,354 | api.supplier_route | ERROR | Failed to add supplier: Supplier name, address, and contact must not be empty
+2024-03-15 15:38:36,849 | suppliers.suppliers | WARNING | Insufficient Data for Creating Supplier
+2024-03-15 15:38:36,850 | api.supplier_route | ERROR | Failed to add supplier: Supplier name, address, and contact must not be empty
+2024-03-15 15:38:42,980 | suppliers.suppliers | WARNING | Insufficient Data for Creating Supplier
+2024-03-15 15:38:42,980 | api.supplier_route | ERROR | Failed to add supplier: Supplier name, address, and contact must not be empty
+2024-03-15 15:39:01,049 | suppliers.suppliers | WARNING | Insufficient Data for Creating Supplier
+2024-03-15 15:39:01,050 | api.supplier_route | ERROR | Failed to add supplier: Supplier name, address, and contact must not be empty
+2024-03-15 15:39:01,903 | suppliers.suppliers | WARNING | Insufficient Data for Creating Supplier
+2024-03-15 15:39:01,903 | api.supplier_route | ERROR | Failed to add supplier: Supplier name, address, and contact must not be empty
+2024-03-15 15:39:04,354 | suppliers.suppliers | WARNING | Insufficient Data for Creating Supplier
+2024-03-15 15:39:04,355 | api.supplier_route | ERROR | Failed to add supplier: Supplier name, address, and contact must not be empty
+2024-03-15 15:39:04,969 | suppliers.suppliers | WARNING | Insufficient Data for Creating Supplier
+2024-03-15 15:39:04,970 | api.supplier_route | ERROR | Failed to add supplier: Supplier name, address, and contact must not be empty
+2024-03-15 15:39:06,406 | suppliers.suppliers | WARNING | Insufficient Data for Creating Supplier
+2024-03-15 15:39:06,406 | api.supplier_route | ERROR | Failed to add supplier: Supplier name, address, and contact must not be empty
+2024-03-15 17:09:00,957 | suppliers.suppliers | INFO | <built-in method capitalize of str object at 0x1032591d0> Updated Successfully
+2024-03-15 22:36:28,886 | suppliers.suppliers | WARNING | Supplier Not Found: ('%knife%',)
+2024-03-15 22:36:31,268 | suppliers.suppliers | WARNING | Supplier Not Found: ('%knife%',)
+2024-03-15 22:36:41,002 | products.products | WARNING | Product Not Found (32,)
+2024-03-15 22:36:54,051 | suppliers.suppliers | WARNING | Supplier Not Found: ('%knife%',)
+2024-03-15 22:36:58,340 | suppliers.suppliers | WARNING | Supplier Not Found: ('%knife%',)
+2024-03-15 22:37:06,086 | suppliers.suppliers | WARNING | Supplier Not Found: ('%toy%',)
+2024-03-15 22:37:11,220 | suppliers.suppliers | WARNING | Supplier Not Found: ('%toy%',)
+2024-03-15 22:44:15,306 | products.products | WARNING | Product Not Found (32,)
+2024-03-15 22:47:40,959 | suppliers.suppliers | WARNING | Supplier Not Found: ('%toy%',)
+2024-03-15 22:50:22,263 | suppliers.suppliers | WARNING | Supplier Not Found: ('%toy%',)
+2024-03-15 22:58:27,277 | products.products | INFO | Product Added Successfully
+2024-03-15 23:04:09,395 | products.products | INFO | Product Added Successfully
+2024-03-15 23:05:44,979 | products.products | INFO | Product Added Successfully
+2024-03-15 23:05:51,291 | products.products | INFO | Product Added Successfully
+2024-03-15 23:07:00,654 | products.products | INFO | Product Added Successfully
+2024-03-15 23:21:08,615 | products.products | ERROR | Database Error 1054 (42S22): Unknown column 'name' in 'field list'
+2024-03-15 23:26:52,754 | products.products | ERROR | Database Error 1054 (42S22): Unknown column 'name' in 'field list'
+2024-03-15 23:28:16,861 | products.products | ERROR | Database Error 1054 (42S22): Unknown column 'name' in 'field list'
+2024-03-15 23:32:18,148 | suppliers.suppliers | INFO | <built-in method capitalize of str object at 0x102e32250> Updated Successfully
+2024-03-15 23:33:51,986 | products.products | INFO | <built-in method capitalize of str object at 0x10626e220> Updated Successfully
+2024-03-15 23:34:20,574 | products.products | INFO | <built-in method capitalize of str object at 0x10626f060> Updated Successfully
+2024-03-17 18:52:24,954 | products.py | logic.products.products | INFO | Product Added Successfully
+2024-03-17 18:53:05,002 | products.py | logic.products.products | INFO | Product Added Successfully
+2024-03-17 18:53:08,714 | products.py | logic.products.products | INFO | Product Added Successfully
+2024-03-17 18:53:08,861 | products.py | logic.products.products | INFO | Product Added Successfully
+2024-03-17 18:55:50,076 | products.py | logic.products.products | WARNING | Product Not Found None
+2024-03-17 18:55:53,291 | products.py | logic.products.products | WARNING | Product Not Found None
+2024-03-17 18:55:56,072 | products.py | logic.products.products | WARNING | Product Not Found None
+2024-03-17 18:56:18,037 | products.py | logic.products.products | ERROR | Database Error 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`ims`.`products`, CONSTRAINT `fk_supplier` FOREIGN KEY (`supplier_id`) REFERENCES `suppliers` (`id`) ON DELETE CASCADE)
+2024-03-17 18:56:18,039 | products_route.py | api.products_route | ERROR | Faild to Add Product: Could not build url for endpoint 'product_routes.get_product'. Did you forget to specify values ['product_id']?
+2024-03-17 18:56:35,001 | products.py | logic.products.products | ERROR | Database Error 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`ims`.`products`, CONSTRAINT `fk_supplier` FOREIGN KEY (`supplier_id`) REFERENCES `suppliers` (`id`) ON DELETE CASCADE)
+2024-03-17 18:56:35,004 | products_route.py | api.products_route | ERROR | Faild to Add Product: Could not build url for endpoint 'product_routes.get_product'. Did you forget to specify values ['product_id']?
+2024-03-17 18:56:39,503 | products.py | logic.products.products | WARNING | Product Not Found None
+2024-03-17 18:57:01,509 | products.py | logic.products.products | INFO | Product Added Successfully
+2024-03-17 18:57:04,836 | products.py | logic.products.products | INFO | Product Added Successfully
+2024-03-17 18:57:04,994 | products.py | logic.products.products | INFO | Product Added Successfully
+2024-03-17 18:57:05,169 | products.py | logic.products.products | INFO | Product Added Successfully
+2024-03-17 18:57:05,311 | products.py | logic.products.products | INFO | Product Added Successfully
+2024-03-17 18:57:05,451 | products.py | logic.products.products | INFO | Product Added Successfully
+2024-03-17 19:40:34,698 | suppliers.py | logic.suppliers.suppliers | WARNING | Insufficient Data for Creating Supplier
+2024-03-17 19:40:34,700 | supplier_route.py | api.supplier_route | ERROR | Failed to add supplier: Supplier Name, Address, and Contact must not be empty

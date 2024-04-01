@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"tailwind": "tailwind -i static/styles.css -o static/index.css",
+		"tailwind": "tailwind -i static/css/styles.css -o static/css/index.css",
 		"watch:css": "nodemon -e py,html,css,js -x npm run tailwind"
 	},
 	"keywords": [],
