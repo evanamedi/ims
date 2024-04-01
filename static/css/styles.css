@@ -1,26 +1,265 @@
+/* stylelint-disable-next-line $code */
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+@import "tailwindcss/forms";
 
+/* 
+All CSS is listed as it appears in the HTML by order. 
+They are labeled by their respective groups.
+All groups will have a layer number associated with it.
+Layer numbers are not meant to be taken literally- but serve as a general guide.
+*/
+
+/* */
+/* */
+/* */
+/* */
+/* */
+/* -------------------- ENTRANCE -------------------- */
+/*  					LAYER: E-1 					  */
 .pageDivide {
-	@apply flex min-h-screen;
+	@apply flex h-full;
+}
+/* */
+/* */
+/* */
+/* */
+/* */
+/* -------------------- LEFT SIDE -------------------- */
+/* 					    LAYER: LS-2 				   */
+
+.leftSide {
+	@apply md:h-full md:block  pt-10 md:mt-0 flex-row md:flex-col md:ml-4 md:mr-4 justify-center  absolute md:static backdrop-blur bg-black bg-opacity-70 min-h-screen w-full  md:w-auto;
 }
 
-.leftDiv {
-	@apply text-white px-6  rounded-lg  pt-16 ml-4 pb-6 bg-goodblue bg-opacity-35 mt-28 h-4/5 max-w-full;
+/* -------------------- IMS NAME DIV -------------------- */
+/*						LAYER:	LS-3 					  */
+
+.IMSnameDiv {
+	@apply text-center  mb-6 rounded-lg text-white hidden md:block;
 }
 
-.rightDiv {
-	@apply w-full min-h-screen;
+.IMS {
+	@apply pt-1 text-4xl pb-3 text-nice text-center;
 }
 
-.title {
-	@apply pt-1 text-2xl md:text-4xl pb-3;
+.i_m_s {
+	@apply text-center text-nice;
 }
 
-.nav {
-	@apply text-white;
+/* -------------------- LEFT SIDE BAR -------------------- */
+/* 						LAYER: LS-3 				   	   */
+.leftSideBar {
+	@apply md:px-6 md:rounded-lg md:mt-6  w-1/4 md:w-full md:max-w-full flex flex-col md:justify-evenly;
 }
+
+.buttonField {
+	@apply text-center text-xl my-2 textColor px-4 border border-nice hover:border-sky3 border-opacity-100 rounded-xl  hover:text-sky3 dark:hover:border-c1 dark:hover:bg-black dark:hover:bg-opacity-60 dark:text-white dark:border-nice dark:hover:bg-white dark:hover:text-black;
+}
+
+/* -------------------- LEFT SIDE BAR SECTION 1 -------------------- */
+/* 						LAYER: LS-4 				      	   	     */
+.sideBarSection1 {
+	@apply md:text-center md:whitespace-nowrap mb-6 flex flex-col;
+}
+
+/* -------------------- LEFT SIDE BAR CATAGORIES MENU -------------------- */
+/* 						LAYER: LS-4 				   	 				   */
+.catagoriesMenu {
+	@apply flex flex-col relative justify-start;
+}
+
+.catagoriesMenuInner {
+	@apply rounded-lg -mt-8 bg-opacity-60 dark:bg-opacity-40 dark:text-black text-white  border-white bg-white dark:border dark:border-black text-center flex-col justify-evenly backdrop-blur absolute w-full z-50;
+}
+
+.selectionOptions {
+	@apply py-2 text-black rounded-lg hover:bg-black hover:bg-opacity-20 dark:hover:bg-black dark:hover:bg-black dark:hover:bg-opacity-50 dark:text-white;
+}
+
+/* -------------------- LEFT SIDE BAR SECTION 3 -------------------- */
+/* 						LAYER: LS-4 				   	   	   		 */
+
+.sideBarSection3 {
+	@apply flex flex-col mb-6 md:whitespace-nowrap;
+}
+
+/* -------------------- LEFT SIDE BAR SECTION 4/5 -------------------- */
+/* 						LAYER: LS-4 			   	   	  			   */
+.sideBarSection4 {
+	@apply flex flex-col whitespace-nowrap;
+}
+
+.sideBarSection5 {
+	@apply text-center text-white flex mt-6 flex-col;
+}
+
+.logoutAndSettings {
+	@apply hover:text-sky3 px-2 my-1 dark:hover:text-black;
+}
+
+/* */
+/* */
+/* */
+/* */
+/* */
+/* -------------------- RIGHT SIDE -------------------- */
+/* 						LAYER:	RS-2 				    */
+
+.rightSide {
+	@apply w-full h-full flex flex-col justify-center;
+}
+
+/* */
+/* */
+/* */
+/* */
+/* */
+/* -------------------- RIGHT SECTION 1 -------------------- */
+/* 						LAYER:	RS-3 				         */
+
+.rightSection1 {
+	@apply w-full flex  justify-center w-full;
+}
+
+.searchBar {
+	@apply mt-16 bg-white max-w-2xl h-8 dark:bg-black dark:bg-opacity-70 dark:placeholder-nice w-3/4 px-2 bg-opacity-40 placeholder-black rounded-lg;
+}
+
+/* -------------------- DATA BASE INPUT FIELDS -------------------- */
+/* 						LAYER:	RS-3 				         		*/
+/*			ADD				*/ /*			UPDATE			*/
+/*			GET				*/ /*			DELETE			*/
+.databaseInputFields {
+	@apply textColor max-h-20 pb-24 flex mt-10 flex-row justify-center backdrop-blur;
+}
+
+.formDiv-3 {
+	@apply flex flex-row mt-2 justify-center;
+}
+
+.formDiv-4 {
+	@apply flex flex-col flex-wrap;
+}
+
+.inputText {
+	@apply textColor ml-2 dark:text-black -mt-4;
+}
+
+.formInput {
+	@apply rounded-md text-black dark:bg-black dark:bg-opacity-20 mx-2 -mt-3;
+}
+
+.submit {
+	@apply mt-5 ml-2;
+}
+
+.submitButton {
+	@apply bg-sameshadeblack px-4 border border-white border-opacity-40 dark:text-nice rounded-2xl hover:bg-white hover:bg-opacity-70 hover:text-black;
+}
+
+/* -------------------- LOGO DIV 1 -------------------- */
+/* 						LAYER:	RS-3 				    */
+
+.logoDiv1 {
+	@apply flex static justify-center;
+}
+
+.logoDiv2 {
+	@apply w-1/4 mt-32 absolute;
+}
+
+/* -------------------- API RESPONSE DIV 1 -------------------- */
+/* 						LAYER:	RS-3 				            */
+
+.APIresponseDiv1 {
+	@apply max-h-[530px] relative overflow-auto mx-4;
+}
+
+.APIresponseDiv2 {
+	@apply text-white overscroll-auto text-center flex flex-col justify-center h-fit;
+}
+
+/* */
+/* */
+/* */
+/* */
+/* */
+/* -------------------- DARK / LIGHT BUTTON LAYER-------------------- */
+/* 						LAYER:	DL-2 				            	  */
+
+.darkLightButtonDiv1 {
+	@apply mr-2 static;
+}
+
+.darkLightInput {
+	@apply flex items-center cursor-pointer;
+}
+
+.darkLightButtonDiv2 {
+	@apply absolute top-4 right-6;
+}
+
+.darkButton {
+	@apply block bg-black border-white border-2 w-14 h-8 rounded-full;
+}
+
+.darkButtonCircle {
+	@apply dot absolute left-1 top-1 bg-nice border border-2 w-6 h-6 rounded-full transition-all duration-500 ease-in-out;
+}
+
+input:checked ~ .dot {
+	@apply transform translate-x-full transition-all duration-500 ease-in-out border border-black border-2 bg-nice;
+}
+
+input:checked ~ .block {
+	@apply bg-white border border-black border-2;
+}
+
+/* */
+/* */
+/* */
+/* */
+/* */
+/* -------------------- TABLE -------------------- */
+/* 										           */
+
+.row {
+	@apply whitespace-nowrap w-auto text-sm max-w-min bg-white dark:text-black textColor dark:bg-nice dark:bg-opacity-70 bg-opacity-20;
+}
+
+.blankRow {
+	@apply p-1;
+}
+
+.header {
+	@apply mx-auto whitespace-nowrap dark:text-black;
+}
+
+.tableHeader {
+	@apply text-white dark:text-black;
+}
+
+/* */
+/* */
+/* */
+/* */
+/* */
+/* -------------------- BASE.HTML -------------------- */
+/* Maybe later: bg-gradient-to-t from-c1 from-5% to-c2 to-30% */
+
+.background {
+	@apply dark:bg-white bg-black;
+}
+
+/* */
+/* */
+/* */
+/* */
+/* */
+/* -------------------- MISCELLANEOUS -------------------- */
+/* 										                   */
 
 .box {
 	@apply mt-4;
@@ -31,53 +270,30 @@
 }
 
 .forms {
-	@apply flex flex-col justify-evenly text-white;
-}
-
-.fieldName {
-	@apply text-center text-xl my-3  px-4 border border-greenborder hover:border-sky3 border-opacity-100 rounded-xl  hover:text-sky3;
-}
-
-.submit {
-	@apply flex justify-center mt-5 ml-2;
-}
-
-.submitButton {
-	@apply bg-sameshadeblack px-4 border border-white border-opacity-40  rounded-2xl hover:bg-white hover:bg-opacity-70 hover:text-black;
-}
-
-.formInput {
-	@apply rounded-md mx-2 -mt-3;
-}
-
-.inputText {
-	@apply text-white ml-2 -mt-4;
+	@apply flex flex-col justify-evenly textColor;
 }
 
 .toggleButton {
 	@apply bg-white text-black bg-opacity-70;
 }
 
-.mainFormDiv-1 {
-	@apply text-white flex mt-6 flex-row justify-center;
-}
-
-.formDiv-3 {
-	@apply flex flex-row mt-2 justify-center;
-}
-
-.formDiv-4 {
-	@apply flex flex-col;
-}
-
-.row {
-	@apply p-2 bg-black bg-opacity-20;
-}
-
-.blankRow {
-	@apply p-1;
-}
-
 .dataName {
-	@apply text-4xl px-4 antialiased italic -ml-4 text-opacity-80 py-2 text-white text-opacity-50 tracking-wider text-center hover:text-white;
+	@apply text-4xl px-4 antialiased italic -ml-4 text-opacity-80 py-2 textColor text-opacity-50 tracking-wider text-center hover:text-white;
 }
+
+.main {
+	@apply w-full bg-black min-h-screen;
+}
+
+.namePlacement {
+	@apply flex flex-col text-white items-end mr-4;
+}
+
+.textColor {
+	@apply text-white;
+}
+
+/* */
+/* */
+/* */
+/* */

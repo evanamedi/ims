@@ -2,32 +2,42 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link href="./static/index.css" rel="stylesheet" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<link href="./static/css/index.css" rel="stylesheet" />
 		<title>{% block title %}{% endblock %}</title>
 	</head>
-	<body class="background min-h-screen">
-		<div class="pageDivide dark:bg-white">
-			<div class="leftSide">
+	<body class="background min-h-screen z-0">
+		<button id="testButton" class="absolute z-10">
+			<img
+				class="h-14 md:hidden flex z-10"
+				src="/static/images/menu.png" />
+		</button>
+		<div class="pageDivide">
+			<div class="leftSide flex hidden z-50" id="testMenu">
 				<div class="IMSnameDiv">
 					<h1 class="IMS">IMS</h1>
 					<p class="i_m_s">Inventory Managment System</p>
 				</div>
 				<div class="leftSideBar">
 					<div class="sideBarSection1">
-						<a class="dashboard" href="{{ url_for('dashboard')}}"
+						<a
+							class="buttonField"
+							href="{{ url_for('dashboard')}}"
 							>Dashboard</a
 						>
-						<button id="stats" class="analytics">Analytics</button>
+						<button id="stats" class="buttonField">
+							Analytics
+						</button>
+						<button class="buttonField" id="tableSelectButton">
+							Tables
+						</button>
 					</div>
 					<div class="catagoriesMenu">
-						<button class="buttonField" id="tableSelectButton">
-							Selection
-						</button>
 						<div
 							id="selectionMenu"
-							class="hidden flex catagoriesMenuInner"
-						>
+							class="flex hidden catagoriesMenuInner">
 							<a
 								class="selectionOptions"
 								href="{{ url_for('suppliers')}}"
@@ -56,13 +66,8 @@
 						</div>
 					</div>
 					<div class="sideBarSection3">
-						<button class="buttonField" id="getAll">All</button>
-						<button class="buttonField" id="getCount">Count</button>
-						<button class="buttonField" id="clear">Clear</button>
-					</div>
-					<div class="sideBarSection4">
 						<button id="createButtonID" class="buttonField">
-							Create New
+							Create
 						</button>
 						<button id="updateButtonID" class="buttonField">
 							Update
@@ -72,6 +77,17 @@
 						</button>
 						<button id="deleteButtonID" class="buttonField">
 							Delete
+						</button>
+					</div>
+					<div class="sideBarSection4">
+						<button class="buttonField" id="getAll">
+							All
+						</button>
+						<button class="buttonField" id="getCount">
+							Count
+						</button>
+						<button class="buttonField" id="clear">
+							Clear
 						</button>
 						<div class="sideBarSection5">
 							<a class="logoutAndSettings">Settings</a>
@@ -87,41 +103,102 @@
 						type="text"
 						placeholder="{% block placeholderSearch %} Search... {% endblock %}"
 						id="search"
-						name="search"
-					/><br />
+						name="search" /><br />
 				</div>
 				<div class="databaseInputFields">
-					{% block dataBaseInputFields %} {% endblock %}
+					{% for form in form_list[1:] %}
+					<form class="hidden flex flex-col" id="{{ form[0] }}">
+						<div class="formDiv-3">
+							{% for value in form[1] %}
+							<div class="formDiv-4">
+								<label
+									class="inputText"
+									for="{{ value.for_label }}"
+									>{{ value.text }}</label
+								><br />
+
+								{% if value.type == "select" %}
+								<select
+									class="formInput"
+									id="{{ value.id }}"
+									name="{{ value.name }}">
+									<option></option>
+									{% for option_id, option_text in
+									value.options.items() %}
+									<option value="{{ option_id }}">
+										{{ option_text }}
+									</option>
+									{% endfor %}</select
+								><br />
+
+								{% elif value.type == "select_id"%}
+								<select
+									class="formInput"
+									id="{{ value.id }}"
+									name="{{ value.name }}">
+									<option></option>
+									{% for id in value.options %}
+									<option>{{ id }}</option>
+									{% endfor %}</select
+								><br />
+
+								{% else %}
+								<input
+									class="formInput"
+									type="text"
+									id="{{ value.id }}"
+									name="{{ value.name }}" /><br />
+								{% endif %}
+							</div>
+
+							{% endfor %}
+
+							<div>
+								<div class="submit">
+									<input
+										class="submitButton"
+										type="submit"
+										value="Submit" />
+								</div>
+							</div>
+						</div>
+					</form>
+					{% endfor %}
 				</div>
-				<div id="loading" style="display: none">Loading...</div>
+				<div id="loading" class="hidden">Loading...</div>
 				<div id="error"></div>
 				<div class="logoDiv1">
 					<div class="w-18 logoDiv2">
-						<img id="logo" src="/static/imslogo.png" />
+						<img id="logo" src="/static/images/imslogo.png" />
 					</div>
 				</div>
 				<div class="APIresponseDiv1">
 					<div class="APIresponseDiv2" id="response"></div>
 				</div>
-			</div>
-			<div class="darkLightButtonDiv1">
-				<label
-					for="toggleB"
-					id="lightMode-toggle"
-					class="darkLightInput"
-				>
-					<div class="darkLightButtonDiv2">
-						<input id="toggleB" type="checkbox" class="sr-only" />
-						<div class="darkButton"></div>
-						<div class="darkButtonCircle"></div>
-					</div>
-				</label>
+				<div class="darkLightButtonDiv1 z-10">
+					<label
+						for="toggleB"
+						id="lightMode-toggle"
+						class="darkLightInput">
+						<div class="darkLightButtonDiv2">
+							<input
+								id="toggleB"
+								type="checkbox"
+								class="sr-only" />
+							<div class="darkButton"></div>
+							<div class="darkButtonCircle"></div>
+						</div>
+					</label>
+				</div>
 			</div>
 		</div>
-		<script src="static/color_change.js"></script>
-		<script src="static/js/global/global_dropdown_and_buttons.js"></script>
-		<script src="static/js_routing/global_routing_functions.js"></script>
-		<script src="/static/js/global/form_buttons.js"></script>
+		<input type="hidden" id="pageName" value="{{ pageName }}" />
 		{% block scripts %} {% endblock %}
+		<script src="static/js/global/global_routing_interface.js"></script>
+		<script src="static/js/global/light_mode.js"></script>
+		<script src="static/js/global/global_select_table_menu.js"></script>
+		<script src="static/js/global/global_routing_utils.js"></script>
+		<script src="static/js/global/global_form_display.js"></script>
+		<script src="static/js/global/global_routing_data.js"></script>
 	</body>
 </html>
