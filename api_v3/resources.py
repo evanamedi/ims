@@ -55,7 +55,7 @@ class SupplierResource(Resource):
         else:
             return {'message': 'Item not found'}, 404
 
-# Repeat the above class for Product, Customer, Order, Sale with the appropriate model
+
 
 class SupplierQueryResource(Resource):
     def __init__(self):
@@ -88,5 +88,3 @@ class SupplierQueryResource(Resource):
     @staticmethod
     def row2dict(row):
         return {column.name: getattr(row, column.name) for column in row.__table__.columns}
-
-# Repeat the above class for Product, Customer, Order, Sale with the appropriate model

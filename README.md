@@ -1,19 +1,67 @@
-# IMS (Inventory Management System)
+# Inventory Management System (IMS)
 
-## Objective
+## Overview
 
-This was initially just a small project to reinforce working with databases, and OOP. However, I kept thinking of things to make it better, and what started out as just a basic terminal interface is now turning into a full stack web app. This is not intended for commercial use. I just like building stuff. I will document the entire process step by step and post it on this repo once it gets closer to being "finished". If you find any issues, or ways to improve it- let me know. Here is a few of the things it currently has, followed by some nice to haves:
+This Inventory Management System is a web-based application designed to manage various aspects of inventory operations, including suppliers, products, customers, orders, and sales. The application is built using the Flask web framework and follows a modular structure to maintain separation of concerns and enhance scalability. The system leverages RESTful APIs to handle CRUD operations and supports real-time data interaction (MySql) through a dynamic front-end interface.
 
-### Current Implementations
+## Improvements
 
--   MySql database set up for managing inventory (suppliers, products (inventory), customers, orders, sales)
--   Python business logic for interacting with the database. Was originally bloated In terms of redundant code, but now runs through a single interface. However, I am still tinkering with whether or not this approach is best. For the time being I enjoy how modular it is, and simple in terms of adding/maintaining logic.
--   RESTful and independent API using Flask. I was considering approaching this with the same interface design as the database logic. I decided against it for two reasons: First, I wanted to make sure each set of routes were truly independent of each other, and straight forward to add/maintain. And second, building on to that, my experience with API development is limited- so I wanted to reinforce what I was doing. There is some pattern of redundancy- but I would argue it's warranted, and makes sense in this case.
--   Client side webapp for manipulating inventory, with responsive and welcoming interface.
--   The web app is designed for overview, and root access for any changes that need to be made.
+Refactorization to the database operation logic is necessary to maintain scalability. Within archive/logic/database_logic.py there exists a class called "Table" that was used in the first version of the application to minimize code duplication, but was abandoned for Flask Alchemy. The intent was to use a modern framework for handling database operations, and not relying on the previous logic that was created manually. The intent was good, but the execution was poor.
 
-### Nice to have down the road
+## Features
 
-#### Things i'm currently working on
+-   **Dashboard:** A central location to monitor key metrics and activities.
+-   **Suppliers Management:** Create, update, retrieve, and delete supplier information.
+-   **Products Management:** Manage products, including linking them to suppliers and tracking inventory levels.
+-   **Customers Management:** Handle customer details and their related orders and sales.
+-   **Orders and Sales:** Manage orders and sales, linking them to customers and products.
+-   **Analytics:** View and analyze data through the integrated analytics dashboard.
 
-#### Some known issues
+## Project Structure
+
+-   **`app.py`**: The main application entry point.
+-   **`api_routes.py`**: Contains the blueprint and API resource mappings.
+-   **`models.py`**: Defines the database models for the application.
+-   **`database_operations.py`**: Utility functions for performing database operations.
+-   **`templates/`**: HTML templates for dynamically rendering the UI.
+-   **`api_v3_resources/`**: Contains the API resource classes for handling CRUD operations.
+
+## API Endpoints
+
+-   **Suppliers:**
+
+    -   `POST /api/v3/suppliers/create`
+    -   `GET /api/v3/suppliers/<id>`
+    -   `PUT /api/v3/suppliers/<id>`
+    -   `DELETE /api/v3/suppliers/<id>`
+
+-   **Products:**
+
+    -   `POST /api/v3/products/create`
+    -   `GET /api/v3/products/<id>`
+    -   `PUT /api/v3/products/<id>`
+    -   `DELETE /api/v3/products/<id>`
+
+-   **Customers:**
+
+    -   `POST /api/v3/customers/create`
+    -   `GET /api/v3/customers/<id>`
+    -   `PUT /api/v3/customers/<id>`
+    -   `DELETE /api/v3/customers/<id>`
+
+-   **Orders:**
+
+    -   `POST /api/v3/orders/create`
+    -   `GET /api/v3/orders/<id>`
+    -   `PUT /api/v3/orders/<id>`
+    -   `DELETE /api/v3/orders/<id>`
+
+-   **Sales:**
+    -   `POST /api/v3/sales/create`
+    -   `GET /api/v3/sales/<id>`
+    -   `PUT /api/v3/sales/<id>`
+    -   `DELETE /api/v3/sales/<id>`
+
+#### Additional Notes
+
+This project was created with the intent of testing different tools and technologies, and as such contains dependencies that may not be currently used, but exist in use within the archives. There is also several instances of the same logic implemented in many different ways- again usually archived if/when abandoned.

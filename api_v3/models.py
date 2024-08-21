@@ -1,9 +1,9 @@
 from flask_sqlalchemy import SQLAlchemy
 from api_v3.database import db
 
-# Define Supplier class, which represents the 'suppliers' table in the database
+
 class Supplier(db.Model):
-    __tablename__ = 'suppliers' # __tablename__ is a special attribute that defines the name of the table
+    __tablename__ = 'suppliers'
     
     id = db.Column(db.Integer, primary_key=True)
     supplier_name = db.Column(db.String)
